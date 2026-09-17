@@ -16,16 +16,17 @@ only record of what changed and why.
 
 ```bash
 npm run dev          # next dev on 0.0.0.0
-npm run build        # production build — REQUIRED before npm test
+npm run build        # static export to out/ — REQUIRED before npm test
+npm run start        # serve out/ on :3000 (after build)
 npm run typecheck    # tsc --noEmit (strict)
 npm test             # playwright test (browser + unit specs)
 npm run format       # prettier --write app tests playwright.config.ts
 python3 scripts/check-examples.py   # validate + execute lesson code snippets
 ```
 
-`playwright.config.ts` starts the app with `npm run start -- --port 3000`, i.e. the **production**
-server with `reuseExistingServer: true`. Run `npm run build` first or tests run against stale output.
-A dev server already on :3000 will be reused, which also hides build errors.
+Static export (`output: "export"` in `next.config.mjs`) writes HTML to `out/` for Cloudflare Pages.
+`playwright.config.ts` starts `npm run start` (serves `out/` on :3000) with `reuseExistingServer: true`.
+Run `npm run build` first or tests run against stale output. A server already on :3000 will be reused.
 
 Run a single test by title (titles are the stable handle; there are no test ids):
 

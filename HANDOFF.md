@@ -2,23 +2,24 @@
 updated: 2026-09-17
 
 ## Goal
-เพิ่ม LICENSE และ README ที่รากโปรเจกต์
+แก้ Cloudflare Pages deploy ที่ fail เพราะ output directory ผิด
 
 ## Steps
-- [x] เขียน MIT LICENSE (copyright Kristalyn Narongpiyawatha, 2026)
-- [x] เขียน README.md ภาษาไทย (ภาพรวม + setup + สคริปต์)
-- [x] ตั้ง package.json license เป็น MIT
+- [x] เพิ่ม next.config.mjs ด้วย output: "export" → สร้างโฟลเดอร์ out/
+- [x] อัปเดต README เรื่อง Cloudflare Pages (Build directory = out)
+- [x] ยืนยัน npm run build สร้าง out/index.html
+- [x] ปรับ start/playwright/.gitignore ให้เสิร์ฟและ ignore out/
 
 ## State
-branch: main (ยังไม่มี commit หรือมี staged ก่อนหน้า)
-files: LICENSE, README.md, package.json, HANDOFF.md
+files: next.config.mjs, README.md, HANDOFF.md, package.json, playwright.config.ts, .gitignore, CLAUDE.md
 
 ## Decisions
-- ใช้ MIT แทน ISC ที่ npm ใส่มาโดยค่าเริ่มต้น — เหมาะกับโปรเจกต์โอเพนซอร์ส
-- README เป็นภาษาไทยให้สอดคล้องกับเนื้อหาผู้เรียน; ชื่อไฟล์ LICENSE ตามมาตรฐาน GitHub
+- ใช้ static HTML export เพราะแอป client-only (localStorage, hash route) ไม่ต้อง SSR/Workers adapter
+- Cloudflare Pages ต้องการ asset dir จริง; ค่า "next" / ".next" ใช้กับ Pages static ไม่ได้
+- `npm run start` = `python3 -m http.server` เสิร์ฟ `out/` เพราะ `next start` ใช้กับ export ไม่ได้
 
 ## Next action
-ตรวจ diff แล้ว commit เมื่อผู้ใช้ขอ
+commit แล้วใน Cloudflare dashboard ตั้ง Build directory เป็น `out` แล้ว redeploy
 
 ## Known limitations
-โฟลเดอร์ซ้อน `python-ai-course/` (ว่างเกือบหมด) ยังไม่ได้แตะ
+ต้อง build ก่อน start/test; start ใช้ Python 3 stdlib ไม่มี static server ใน npm deps

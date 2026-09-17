@@ -22,12 +22,14 @@ npm run dev
 
 เปิด http://localhost:3000
 
-สำหรับ production:
+สำหรับ production (static export → โฟลเดอร์ `out/`):
 
 ```bash
 npm run build
-npm run start
+npx serve out
 ```
+
+Deploy บน Cloudflare Pages: Framework preset **Next.js (Static HTML Export)**, Build command `npx next build` (หรือ `npm run build`), **Build directory `out`** — อย่าใส่ `next` หรือ `.next`
 
 ## สคริปต์
 

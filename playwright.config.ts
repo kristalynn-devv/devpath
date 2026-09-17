@@ -3,7 +3,7 @@ export default defineConfig({
   testDir: "./tests",
   use: { baseURL: "http://localhost:3000", headless: true, channel: "chrome" },
   webServer: {
-    command: "npm run start -- --port 3000",
+    command: "npm run start",
     url: "http://localhost:3000",
     reuseExistingServer: true,
   },
