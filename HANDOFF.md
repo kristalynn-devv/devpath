@@ -2,24 +2,22 @@
 updated: 2026-09-17
 
 ## Goal
-แก้ Cloudflare Pages deploy ที่ fail เพราะ output directory ผิด
+แก้ Cloudflare Pages fail จาก submodule path `python-ai-course` ที่ไม่มี URL ใน `.gitmodules`
 
 ## Steps
-- [x] เพิ่ม next.config.mjs ด้วย output: "export" → สร้างโฟลเดอร์ out/
-- [x] อัปเดต README เรื่อง Cloudflare Pages (Build directory = out)
-- [x] ยืนยัน npm run build สร้าง out/index.html
-- [x] ปรับ start/playwright/.gitignore ให้เสิร์ฟและ ignore out/
+- [x] ลบ gitlink `python-ai-course` (mode 160000) ออกจาก index
+- [x] ลบโฟลเดอร์ว่างซ้อน และกันด้วย `.gitignore`
+- [ ] commit + push แล้ว redeploy บน Cloudflare
 
 ## State
-files: next.config.mjs, README.md, HANDOFF.md, package.json, playwright.config.ts, .gitignore, CLAUDE.md
+repo จริงอยู่ที่ `python-ai-course/` (nested); staged: `D python-ai-course`, `.gitignore` แก้แล้ว
+โฟลเดอร์นอก `Documents/GitHub/python-ai-course/.git` เป็น repo ว่าง — อย่าใช้
 
 ## Decisions
-- ใช้ static HTML export เพราะแอป client-only (localStorage, hash route) ไม่ต้อง SSR/Workers adapter
-- Cloudflare Pages ต้องการ asset dir จริง; ค่า "next" / ".next" ใช้กับ Pages static ไม่ได้
-- `npm run start` = `python3 -m http.server` เสิร์ฟ `out/` เพราะ `next start` ใช้กับ export ไม่ได้
+- ไม่สร้าง `.gitmodules` — path นี้เป็นสำเนาซ้อนโดยไม่ได้ตั้งใจ ไม่ใช่ submodule จริง
 
 ## Next action
-commit แล้วใน Cloudflare dashboard ตั้ง Build directory เป็น `out` แล้ว redeploy
+commit + push จากโฟลเดอร์ nested แล้วให้ Cloudflare clone ใหม่
 
 ## Known limitations
-ต้อง build ก่อน start/test; start ใช้ Python 3 stdlib ไม่มี static server ใน npm deps
+workspace เปิดที่ parent ที่ไม่มีประวัติ git — ควรเปิดโฟลเดอร์ nested เป็น root
