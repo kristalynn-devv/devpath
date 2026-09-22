@@ -3,7 +3,7 @@ id: 0005
 title: กำหนดขอบเขตหลักสูตร Next.js
 type: grilling
 status: open
-assignee:
+assignee: Codex
 blocked_by: [0008]
 ---
 
