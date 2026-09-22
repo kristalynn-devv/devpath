@@ -3,7 +3,7 @@ id: 0006
 title: ออกแบบการเลือกสายและการนำทาง
 type: prototype
 status: open
-assignee:
+assignee: Codex
 blocked_by: [0003, 0004, 0005]
 ---
 
