@@ -16,6 +16,7 @@
 
 - [ตั้งชื่อผลิตภัณฑ์และโฟลเดอร์ใหม่](tickets/0001-product-identity.md): ใช้ DevPath และ `devpath`
 - [กำหนดความสัมพันธ์ของสามสายเรียน](tickets/0002-track-relationship.md): สามสายเริ่มแยกกันได้ โดย Node.js และ Next.js ใช้พื้นฐาน JavaScript/TypeScript ร่วมกันและไม่มีการล็อกข้ามสาย
+- [วางสัญญาความเข้ากันได้ของข้อมูลผู้เรียนเดิม](tickets/0003-existing-progress-compatibility.md): รักษา localStorage และ URL ของ Python เดิม พร้อมใช้ namespace และ URL ใหม่แยกสำหรับ Node.js กับ Next.js
 
 ## Not yet specified
 
