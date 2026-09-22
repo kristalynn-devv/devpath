@@ -3,7 +3,7 @@ id: 0002
 title: กำหนดความสัมพันธ์ของสามสายเรียน
 type: grilling
 status: open
-assignee:
+assignee: Codex
 blocked_by: []
 ---
 
