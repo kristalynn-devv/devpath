@@ -19,11 +19,11 @@
 - [วางสัญญาความเข้ากันได้ของข้อมูลผู้เรียนเดิม](tickets/0003-existing-progress-compatibility.md): รักษา localStorage และ URL ของ Python เดิม พร้อมใช้ namespace และ URL ใหม่แยกสำหรับ Node.js กับ Next.js
 - [กำหนดพื้นฐาน JavaScript และ TypeScript ที่ใช้ร่วมกัน](tickets/0008-javascript-typescript-foundation.md): ใช้คอร์สพื้นฐาน 8 บทพร้อมแบบประเมินข้ามบท ก่อนเลือกต่อ Node.js หรือ Next.js โดยไม่ล็อกเส้นทาง
 - [กำหนดขอบเขตหลักสูตร Node.js](tickets/0004-nodejs-curriculum.md): ใช้ 8 บทบน Node.js 24 LTS, TypeScript และ Fastify จบด้วย Task Management API ที่มี database, auth และ tests
+- [กำหนดขอบเขตหลักสูตร Next.js](tickets/0005-nextjs-curriculum.md): ใช้ 8 บทบน Next.js 16, React 19, TypeScript และ App Router จบด้วย Task Dashboard ที่ต่อ Node.js API หรือ API ตัวอย่างได้
 
 ## Not yet specified
 
-- โครงสร้างหน้าเลือกสายและ navigation จะชัดหลังล็อกโครงสร้างหลักสูตร
-- ขอบเขต release แรกและลำดับการเปิดสายจะชัดหลังประเมินปริมาณเนื้อหา
+- ไม่มี
 
 ## Out of scope
 
