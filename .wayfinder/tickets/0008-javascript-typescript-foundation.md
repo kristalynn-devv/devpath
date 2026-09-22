@@ -3,7 +3,7 @@ id: 0008
 title: กำหนดพื้นฐาน JavaScript และ TypeScript ที่ใช้ร่วมกัน
 type: grilling
 status: open
-assignee:
+assignee: Codex
 blocked_by: [0002]
 ---
 
