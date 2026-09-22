@@ -3,7 +3,7 @@ id: 0004
 title: กำหนดขอบเขตหลักสูตร Node.js
 type: grilling
 status: open
-assignee:
+assignee: Codex
 blocked_by: [0008]
 ---
 
