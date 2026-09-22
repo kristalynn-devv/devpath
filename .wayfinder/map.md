@@ -18,6 +18,7 @@
 - [กำหนดความสัมพันธ์ของสามสายเรียน](tickets/0002-track-relationship.md): สามสายเริ่มแยกกันได้ โดย Node.js และ Next.js ใช้พื้นฐาน JavaScript/TypeScript ร่วมกันและไม่มีการล็อกข้ามสาย
 - [วางสัญญาความเข้ากันได้ของข้อมูลผู้เรียนเดิม](tickets/0003-existing-progress-compatibility.md): รักษา localStorage และ URL ของ Python เดิม พร้อมใช้ namespace และ URL ใหม่แยกสำหรับ Node.js กับ Next.js
 - [กำหนดพื้นฐาน JavaScript และ TypeScript ที่ใช้ร่วมกัน](tickets/0008-javascript-typescript-foundation.md): ใช้คอร์สพื้นฐาน 8 บทพร้อมแบบประเมินข้ามบท ก่อนเลือกต่อ Node.js หรือ Next.js โดยไม่ล็อกเส้นทาง
+- [กำหนดขอบเขตหลักสูตร Node.js](tickets/0004-nodejs-curriculum.md): ใช้ 8 บทบน Node.js 24 LTS, TypeScript และ Fastify จบด้วย Task Management API ที่มี database, auth และ tests
 
 ## Not yet specified
 
