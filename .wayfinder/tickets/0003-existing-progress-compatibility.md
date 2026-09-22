@@ -3,7 +3,7 @@ id: 0003
 title: วางสัญญาความเข้ากันได้ของข้อมูลผู้เรียนเดิม
 type: grilling
 status: open
-assignee:
+assignee: Codex
 blocked_by: [0002]
 ---
 
