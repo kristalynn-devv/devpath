@@ -4,7 +4,7 @@ title: กำหนดขอบเขตหลักสูตร Node.js
 type: grilling
 status: open
 assignee:
-blocked_by: [0002]
+blocked_by: [0008]
 ---
 
 ## Question
