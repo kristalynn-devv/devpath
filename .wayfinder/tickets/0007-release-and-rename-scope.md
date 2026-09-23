@@ -3,7 +3,7 @@ id: 0007
 title: ล็อกขอบเขต release และการเปลี่ยนชื่อทางเทคนิค
 type: grilling
 status: open
-assignee:
+assignee: Codex
 blocked_by: [0003, 0004, 0005, 0006]
 ---
 
