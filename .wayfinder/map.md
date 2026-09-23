@@ -21,10 +21,11 @@
 - [กำหนดขอบเขตหลักสูตร Node.js](tickets/0004-nodejs-curriculum.md): ใช้ 8 บทบน Node.js 24 LTS, TypeScript และ Fastify จบด้วย Task Management API ที่มี database, auth และ tests
 - [กำหนดขอบเขตหลักสูตร Next.js](tickets/0005-nextjs-curriculum.md): ใช้ 8 บทบน Next.js 16, React 19, TypeScript และ App Router จบด้วย Task Dashboard ที่ต่อ Node.js API หรือ API ตัวอย่างได้
 - [ออกแบบการเลือกสายและการนำทาง](tickets/0006-learning-navigation.md): ใช้ Variant B แบบแผนที่ แสดง Python แยกอิสระและพื้นฐาน JavaScript/TypeScript แตกไป Node.js หรือ Next.js พร้อม full-stack เป็นปลายทางเสริม
+- [ล็อกขอบเขต release และการเปลี่ยนชื่อทางเทคนิค](tickets/0007-release-and-rename-scope.md): release แรกมี 64 บทครบสามสาย ใช้แบรนด์ DevPath รวมทั้งชื่อ package, โฟลเดอร์, GitHub repository และ Cloudflare Pages โดยคง static export ไป `out`
 
 ## Not yet specified
 
-- ไม่มี
+แผนตัดสินใจจบแล้ว ไม่มีคำถามค้างก่อนเริ่ม build
 
 ## Out of scope
 
