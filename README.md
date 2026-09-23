@@ -1,51 +1,57 @@
 # PyPath — Python for AI
 
-เว็บแอปภาษาไทยสำหรับเรียน Python สู่ AI ตั้งแต่พื้นฐานจนถึง AI Engineering
+A Thai-language web app for learning Python through to AI engineering, from first syntax to
+shipping.
 
-ไม่มีบัญชี ไม่มี backend ไม่รันโค้ดในเบราว์เซอร์ — ความคืบหน้าและผลแบบทดสอบเก็บใน `localStorage` ของเครื่องผู้เรียนเท่านั้น
+No accounts, no backend, no code execution in the browser. Progress and quiz results live in the
+learner's own `localStorage` and go nowhere else.
 
-## สิ่งที่มี
+## What's in it
 
-- **5 คอร์ส** รวม 40 บท (พื้นฐาน → ML → Deep Learning → LLM/RAG → AI Engineering)
-- อ่านแนวคิด ตัวอย่างโค้ด แบบฝึกหัด และแบบทดสอบความเข้าใจทุกบท
-- **Adaptive coach** แนะนำบทจากคำตอบครั้งแรกในคลังประเมิน 3 ระดับต่อคอร์ส
-- รองรับมือถือและเดสก์ท็อป ใช้ URL hash เลือกคอร์ส/บท
+- **5 courses, 40 lessons** — fundamentals → ML → deep learning → LLM/RAG → AI engineering
+- Concepts, worked code examples, exercises, and a comprehension quiz in every lesson
+- **Adaptive coach** — recommends where to start from your first pass at a three-tier
+  assessment bank, one per course
+- Mobile and desktop; course and lesson selection is driven by the URL hash
 
-## เริ่มต้น
+## Getting started
 
-ต้องการ Node.js 18+
+Node.js 18 or newer.
 
 ```bash
 npm install
 npm run dev
 ```
 
-เปิด http://localhost:3000
+Open http://localhost:3000
 
-สำหรับ production (static export → โฟลเดอร์ `out/`):
+Production is a static export into `out/`:
 
 ```bash
 npm run build
 npx serve out
 ```
 
-Deploy บน Cloudflare Pages: Framework preset **Next.js (Static HTML Export)**, Build command `npx next build` (หรือ `npm run build`), **Build directory `out`** — อย่าใส่ `next` หรือ `.next`
+Deploying to Cloudflare Pages: framework preset **Next.js (Static HTML Export)**, build command
+`npm run build`, and build output directory **`out`** — not `next`, not `.next`.
 
-## สคริปต์
+## Commands
 
-| คำสั่ง | ความหมาย |
+| Command | What it does |
 | --- | --- |
-| `npm run dev` | เซิร์ฟเวอร์พัฒนา |
-| `npm run build` | build production (ต้องทำก่อน `npm test`) |
-| `npm run start` | เปิด production server |
-| `npm run typecheck` | TypeScript แบบ strict |
-| `npm test` | Playwright (ต้องมี Chrome และ build ล่าสุด) |
+| `npm run dev` | Development server |
+| `npm run build` | Production build — required before `npm test` |
+| `npm run start` | Serve the production build |
+| `npm run typecheck` | TypeScript, strict |
+| `npm test` | Playwright — needs Chrome and a current build |
 | `npm run format` | Prettier |
-| `python3 scripts/check-examples.py` | ตรวจและรันตัวอย่างโค้ดในคอร์ส 2–5 |
+| `python3 scripts/check-examples.py` | Lint and actually run the code samples in courses 2–5 |
 
-## ขอบเขต
+That last one exists because a course full of examples that do not run is worse than no examples.
 
-ดูรายละเอียดผลิตภัณฑ์ใน [`PRD.md`](PRD.md) สถานะงานล่าสุดใน [`HANDOFF.md`](HANDOFF.md)
+## Scope
+
+Product detail in [`PRD.md`](PRD.md); current state of the work in [`HANDOFF.md`](HANDOFF.md).
 
 ## License
 
