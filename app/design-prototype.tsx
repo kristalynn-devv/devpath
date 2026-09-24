@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-// Prototype: nine DevPath styles on the existing route, switchable with ?variant=.
+// Prototype: fifteen DevPath styles on the existing route, switchable with ?variant=.
 const variants = [
   { key: "A", name: "Original Studio" },
   { key: "B", name: "Editorial" },
@@ -14,6 +14,12 @@ const variants = [
   { key: "G", name: "shadcn/ui inspired" },
   { key: "H", name: "Material inspired" },
   { key: "I", name: "Bootstrap inspired" },
+  { key: "J", name: "Ant Design inspired" },
+  { key: "K", name: "Chakra UI inspired" },
+  { key: "L", name: "Fluent UI inspired" },
+  { key: "M", name: "Carbon inspired" },
+  { key: "N", name: "Polaris inspired" },
+  { key: "O", name: "daisyUI inspired" },
 ] as const;
 
 type Variant = (typeof variants)[number]["key"];
@@ -36,9 +42,14 @@ export function DesignPrototypeSwitcher() {
 
   useEffect(() => {
     document.documentElement.dataset.designVariant = variant;
-    optionsRef.current
-      ?.querySelector("button.active")
-      ?.scrollIntoView({ block: "nearest", inline: "center" });
+    const options = optionsRef.current;
+    const active = options?.querySelector<HTMLButtonElement>("button.active");
+    if (options && active) {
+      options.scrollLeft =
+        active.offsetLeft -
+        options.offsetLeft -
+        (options.clientWidth - active.clientWidth) / 2;
+    }
     return () => {
       delete document.documentElement.dataset.designVariant;
     };

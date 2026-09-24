@@ -990,6 +990,675 @@ html[data-design-variant="I"] .lesson-number {
   color: #0d6efd;
 }
 
+/* J–O share only reader surface tokens; their layouts remain independent. */
+html:is(
+    [data-design-variant="J"],
+    [data-design-variant="K"],
+    [data-design-variant="L"],
+    [data-design-variant="M"],
+    [data-design-variant="N"],
+    [data-design-variant="O"]
+  )
+  .lesson-content
+  section,
+html:is(
+    [data-design-variant="J"],
+    [data-design-variant="K"],
+    [data-design-variant="L"],
+    [data-design-variant="M"],
+    [data-design-variant="N"],
+    [data-design-variant="O"]
+  )
+  .mini-course {
+  border: 1px solid var(--prototype-line);
+  border-radius: var(--prototype-radius);
+  background: var(--prototype-panel);
+  box-shadow: var(--prototype-shadow);
+}
+html:is(
+    [data-design-variant="J"],
+    [data-design-variant="K"],
+    [data-design-variant="L"],
+    [data-design-variant="M"],
+    [data-design-variant="N"],
+    [data-design-variant="O"]
+  )
+  .lesson-content
+  .exercise,
+html:is(
+    [data-design-variant="J"],
+    [data-design-variant="K"],
+    [data-design-variant="L"],
+    [data-design-variant="M"],
+    [data-design-variant="N"],
+    [data-design-variant="O"]
+  )
+  .mini-course
+  button.current,
+html:is(
+    [data-design-variant="J"],
+    [data-design-variant="K"],
+    [data-design-variant="L"],
+    [data-design-variant="M"],
+    [data-design-variant="N"],
+    [data-design-variant="O"]
+  )
+  .choice.chosen {
+  background: var(--prototype-soft);
+  border-color: var(--prototype-accent);
+  color: var(--prototype-ink);
+}
+html:is(
+    [data-design-variant="J"],
+    [data-design-variant="K"],
+    [data-design-variant="L"],
+    [data-design-variant="M"],
+    [data-design-variant="N"],
+    [data-design-variant="O"]
+  )
+  .primary-button {
+  border-color: var(--prototype-accent);
+  border-radius: var(--prototype-radius);
+  background: var(--prototype-accent);
+  color: var(--prototype-button-ink, white);
+}
+
+/* J: Ant Design-inspired compact enterprise workspace. */
+html[data-design-variant="J"] body {
+  --bg: #f5f7fa;
+  --ink: #1f2937;
+  --line: #d9e0e8;
+  --prototype-panel: #fff;
+  --prototype-soft: #e8f3ff;
+  --prototype-ink: #0958d9;
+  --prototype-accent: #1677ff;
+  --prototype-line: #d9e0e8;
+  --prototype-radius: 6px;
+  --prototype-shadow: 0 1px 3px #1f29370b;
+  background: var(--bg);
+  color: var(--ink);
+}
+html[data-design-variant="J"] .sidebar {
+  width: 214px;
+  background: #fff;
+}
+html[data-design-variant="J"] .main-wrap {
+  margin-left: 214px;
+}
+html[data-design-variant="J"] .brand-icon,
+html[data-design-variant="J"] .path-dot.done {
+  background: #1677ff;
+}
+html[data-design-variant="J"] .nav-item.selected,
+html[data-design-variant="J"] .course-option.active {
+  background: #e8f3ff;
+  color: #0958d9;
+}
+html[data-design-variant="J"] .topbar {
+  height: 58px;
+  background: #fff;
+}
+html[data-design-variant="J"] main {
+  max-width: 1440px;
+  padding-top: 24px;
+}
+html[data-design-variant="J"] .track-map {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+html[data-design-variant="J"] .track-card,
+html[data-design-variant="J"] .course-option,
+html[data-design-variant="J"] .lesson-card,
+html[data-design-variant="J"] .stats {
+  border: 1px solid #d9e0e8;
+  border-radius: 6px;
+  background: #fff;
+}
+html[data-design-variant="J"] .track-card {
+  min-height: 82px;
+}
+html[data-design-variant="J"] .fullstack-destination {
+  min-height: 58px;
+}
+html[data-design-variant="J"] .course-option {
+  padding: 11px;
+  gap: 3px;
+}
+html[data-design-variant="J"] .hero {
+  min-height: 260px;
+  border-radius: 6px;
+  background: linear-gradient(110deg, #0958d9, #4096ff);
+}
+html[data-design-variant="J"] .hero-button,
+html[data-design-variant="J"] .tabs button.active {
+  background: #fff;
+  color: #0958d9;
+}
+html[data-design-variant="J"] .lesson-number {
+  border-radius: 6px;
+  background: #e8f3ff;
+  color: #0958d9;
+}
+html[data-design-variant="J"] .lesson-heading {
+  padding: 20px;
+  border: 1px solid #d9e0e8;
+  border-radius: 6px;
+  background: #fff;
+  margin-bottom: 18px;
+}
+html[data-design-variant="J"] .lesson-heading > p {
+  margin-bottom: 0;
+}
+html[data-design-variant="J"] .code-window {
+  background: #152238;
+}
+
+/* K: Chakra UI-inspired calm teal study flow. */
+html[data-design-variant="K"] body {
+  --bg: #f2faf8;
+  --ink: #234e52;
+  --line: #cde8e2;
+  --prototype-panel: #fff;
+  --prototype-soft: #d9f5ed;
+  --prototype-ink: #115e59;
+  --prototype-accent: #0d9488;
+  --prototype-line: #cde8e2;
+  --prototype-radius: 16px;
+  --prototype-shadow: 0 8px 24px #12645b12;
+  background: var(--bg);
+  color: var(--ink);
+}
+html[data-design-variant="K"] .sidebar {
+  width: 220px;
+  border-right: 0;
+  background: #e6f6f1;
+}
+html[data-design-variant="K"] .main-wrap {
+  margin-left: 220px;
+}
+html[data-design-variant="K"] .brand-icon,
+html[data-design-variant="K"] .path-dot.done {
+  border-radius: 15px;
+  background: #0d9488;
+}
+html[data-design-variant="K"] .nav-item.selected,
+html[data-design-variant="K"] .course-option.active {
+  background: #b8e9de;
+  color: #115e59;
+}
+html[data-design-variant="K"] .topbar {
+  background: #f2faf8;
+}
+html[data-design-variant="K"] .course-catalog {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 14px 18px;
+}
+html[data-design-variant="K"] .catalog-heading,
+html[data-design-variant="K"] .prerequisite {
+  grid-column: 1 / -1;
+}
+html[data-design-variant="K"] .track-map {
+  grid-template-columns: 1fr;
+  margin: 0;
+}
+html[data-design-variant="K"] .track-card {
+  min-height: 70px;
+}
+html[data-design-variant="K"] .fullstack-destination {
+  grid-column: auto;
+}
+html[data-design-variant="K"] .course-switcher {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+}
+html[data-design-variant="K"] .track-card,
+html[data-design-variant="K"] .course-option,
+html[data-design-variant="K"] .lesson-card,
+html[data-design-variant="K"] .stats {
+  border: 1px solid #cde8e2;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px #12645b0a;
+}
+html[data-design-variant="K"] .hero {
+  border-radius: 24px;
+  background: linear-gradient(120deg, #115e59, #0d9488);
+}
+html[data-design-variant="K"] .hero-button,
+html[data-design-variant="K"] .tabs button.active {
+  border-radius: 12px;
+  background: #ccfbf1;
+  color: #115e59;
+}
+html[data-design-variant="K"] .lesson-number {
+  border-radius: 14px;
+  background: #d9f5ed;
+  color: #115e59;
+}
+html[data-design-variant="K"] .lesson-content .code-window {
+  border-radius: 14px;
+  background: #123e3b;
+}
+html[data-design-variant="K"] .lesson-content .output {
+  background: #e6f6f1;
+}
+
+/* L: Fluent UI-inspired blue-gray top navigation and reading canvas. */
+html[data-design-variant="L"] body {
+  --bg: #f3f6fa;
+  --ink: #25354a;
+  --line: #dbe3ed;
+  --prototype-panel: #fff;
+  --prototype-soft: #e5f0ff;
+  --prototype-ink: #004a9f;
+  --prototype-accent: #0067b8;
+  --prototype-line: #dbe3ed;
+  --prototype-radius: 4px;
+  --prototype-shadow: 0 2px 10px #173c6b12;
+  background: var(--bg);
+  color: var(--ink);
+}
+html[data-design-variant="L"] .sidebar {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  min-height: 66px;
+  padding: 12px 4vw;
+  flex-direction: row;
+  align-items: center;
+  border-right: 0;
+  border-bottom: 1px solid #dbe3ed;
+  background: #fff;
+}
+html[data-design-variant="L"] .sidebar .workspace-label,
+html[data-design-variant="L"] .sidebar .sidebar-divider,
+html[data-design-variant="L"] .sidebar .path-list,
+html[data-design-variant="L"] .sidebar .sidebar-bottom {
+  display: none;
+}
+html[data-design-variant="L"] .sidebar nav {
+  display: flex;
+  gap: 5px;
+  margin-left: auto;
+}
+html[data-design-variant="L"] .nav-item {
+  width: auto;
+  margin: 0;
+}
+html[data-design-variant="L"] .nav-item.selected {
+  border-bottom: 2px solid #0067b8;
+  border-radius: 0;
+  background: #e5f0ff;
+  color: #004a9f;
+}
+html[data-design-variant="L"] .brand-icon,
+html[data-design-variant="L"] .path-dot.done {
+  border-radius: 2px;
+  background: #0067b8;
+}
+html[data-design-variant="L"] .main-wrap {
+  margin-left: 0;
+}
+html[data-design-variant="L"] .topbar {
+  height: 50px;
+  padding: 0 4vw;
+  background: #fff;
+}
+html[data-design-variant="L"] main {
+  max-width: 1420px;
+  padding: 30px 4vw 110px;
+}
+html[data-design-variant="L"] .track-map {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+html[data-design-variant="L"] .track-card,
+html[data-design-variant="L"] .course-option,
+html[data-design-variant="L"] .lesson-card,
+html[data-design-variant="L"] .stats {
+  border: 1px solid #dbe3ed;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 2px 10px #173c6b0a;
+}
+html[data-design-variant="L"] .course-option.active {
+  border-left: 4px solid #0067b8;
+  background: #e5f0ff;
+}
+html[data-design-variant="L"] .hero {
+  min-height: 270px;
+  border-radius: 4px;
+  background: linear-gradient(105deg, #103e72, #0067b8);
+}
+html[data-design-variant="L"] .hero-button,
+html[data-design-variant="L"] .tabs button.active {
+  background: #fff;
+  color: #004a9f;
+}
+html[data-design-variant="L"] .lesson-heading {
+  padding: 30px;
+  border-left: 4px solid #0067b8;
+  background: #fff;
+  margin-bottom: 20px;
+}
+html[data-design-variant="L"] .lesson-heading > p {
+  margin-bottom: 0;
+}
+html[data-design-variant="L"] .lesson-content .code-window {
+  background: #142d49;
+}
+
+/* M: Carbon-inspired sharp editorial grid with a dark rail. */
+html[data-design-variant="M"] body {
+  --bg: #f4f4f4;
+  --ink: #161616;
+  --line: #c6c6c6;
+  --prototype-panel: #fff;
+  --prototype-soft: #d0e2ff;
+  --prototype-ink: #002d9c;
+  --prototype-accent: #0f62fe;
+  --prototype-line: #c6c6c6;
+  --prototype-radius: 0;
+  --prototype-shadow: none;
+  background: var(--bg);
+  color: var(--ink);
+}
+html[data-design-variant="M"] .sidebar {
+  width: 204px;
+  border-right: 0;
+  background: #262626;
+  color: #f4f4f4;
+}
+html[data-design-variant="M"] .main-wrap {
+  margin-left: 204px;
+}
+html[data-design-variant="M"] .brand-icon,
+html[data-design-variant="M"] .path-dot.done {
+  border-radius: 0;
+  background: #0f62fe;
+}
+html[data-design-variant="M"] .workspace-label,
+html[data-design-variant="M"] .nav-item,
+html[data-design-variant="M"] .path-list button {
+  color: #c6c6c6;
+}
+html[data-design-variant="M"] .nav-item.selected {
+  border-left: 3px solid #78a9ff;
+  border-radius: 0;
+  background: #393939;
+  color: #fff;
+}
+html[data-design-variant="M"] .daily-card {
+  border-color: #525252;
+  border-radius: 0;
+  background: #393939;
+  color: #f4f4f4;
+}
+html[data-design-variant="M"] .daily-card p,
+html[data-design-variant="M"] .daily-card small {
+  color: #c6c6c6;
+}
+html[data-design-variant="M"] .topbar {
+  border-bottom: 1px solid #c6c6c6;
+  background: #fff;
+}
+html[data-design-variant="M"] .course-catalog {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0 20px;
+}
+html[data-design-variant="M"] .catalog-heading,
+html[data-design-variant="M"] .prerequisite {
+  grid-column: 1 / -1;
+}
+html[data-design-variant="M"] .track-map,
+html[data-design-variant="M"] .course-switcher {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+}
+html[data-design-variant="M"] .track-card,
+html[data-design-variant="M"] .course-option {
+  min-height: 68px;
+  padding: 10px 14px;
+  border: 0;
+  border-top: 1px solid #c6c6c6;
+  border-radius: 0;
+  background: #fff;
+  gap: 2px;
+}
+html[data-design-variant="M"] .fullstack-destination {
+  text-align: left;
+}
+html[data-design-variant="M"] .course-option.active {
+  border-left: 4px solid #0f62fe;
+  background: #d0e2ff;
+}
+html[data-design-variant="M"] .hero {
+  min-height: 270px;
+  border-radius: 0;
+  background: #262626;
+}
+html[data-design-variant="M"] .hero-button,
+html[data-design-variant="M"] .tabs button.active {
+  border-radius: 0;
+  background: #0f62fe;
+  color: #fff;
+}
+html[data-design-variant="M"] .lesson-card,
+html[data-design-variant="M"] .stats {
+  border: 1px solid #c6c6c6;
+  border-radius: 0;
+  background: #fff;
+}
+html[data-design-variant="M"] .lesson-number {
+  border-radius: 0;
+  background: #262626;
+  color: #fff;
+}
+html[data-design-variant="M"] .lesson-heading {
+  padding: 26px;
+  border-bottom: 4px solid #0f62fe;
+  background: #fff;
+  margin-bottom: 20px;
+}
+html[data-design-variant="M"] .lesson-content .code-window {
+  border-radius: 0;
+  background: #161616;
+}
+html[data-design-variant="M"] .choice {
+  border-radius: 0;
+}
+
+/* N: Polaris-inspired task dashboard with a compact course rail. */
+html[data-design-variant="N"] body {
+  --bg: #f6f6f7;
+  --ink: #303030;
+  --line: #d6d6d8;
+  --prototype-panel: #fff;
+  --prototype-soft: #e3f1df;
+  --prototype-ink: #174f31;
+  --prototype-accent: #127c4c;
+  --prototype-line: #d6d6d8;
+  --prototype-radius: 10px;
+  --prototype-shadow: 0 2px 8px #30303010;
+  background: var(--bg);
+  color: var(--ink);
+}
+html[data-design-variant="N"] .sidebar {
+  width: 206px;
+  background: #fff;
+}
+html[data-design-variant="N"] .main-wrap {
+  margin-left: 206px;
+}
+html[data-design-variant="N"] .brand-icon,
+html[data-design-variant="N"] .path-dot.done {
+  background: #127c4c;
+}
+html[data-design-variant="N"] .nav-item.selected,
+html[data-design-variant="N"] .course-option.active {
+  background: #e3f1df;
+  color: #174f31;
+}
+html[data-design-variant="N"] .topbar {
+  background: #fff;
+}
+html[data-design-variant="N"] .course-catalog {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+  gap: 16px 20px;
+  padding: 22px;
+  border: 1px solid #d6d6d8;
+  border-radius: 10px;
+  background: #fff;
+}
+html[data-design-variant="N"] .catalog-heading,
+html[data-design-variant="N"] .prerequisite {
+  grid-column: 1 / -1;
+}
+html[data-design-variant="N"] .track-map {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0;
+}
+html[data-design-variant="N"] .track-card {
+  min-height: 64px;
+  padding: 9px 12px;
+  gap: 2px;
+}
+html[data-design-variant="N"] .fullstack-destination {
+  text-align: left;
+}
+html[data-design-variant="N"] .course-switcher {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 7px;
+}
+html[data-design-variant="N"] .track-card,
+html[data-design-variant="N"] .course-option,
+html[data-design-variant="N"] .lesson-card,
+html[data-design-variant="N"] .stats {
+  border: 1px solid #d6d6d8;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 2px 8px #3030300a;
+}
+html[data-design-variant="N"] .course-option {
+  padding: 11px;
+}
+html[data-design-variant="N"] .hero {
+  min-height: 265px;
+  border-radius: 10px;
+  background: #174f31;
+}
+html[data-design-variant="N"] .hero-button,
+html[data-design-variant="N"] .tabs button.active {
+  background: #e3f1df;
+  color: #174f31;
+}
+html[data-design-variant="N"] .lesson-number {
+  background: #e3f1df;
+  color: #174f31;
+}
+html[data-design-variant="N"] .lesson-content .code-window {
+  background: #18352a;
+}
+
+/* O: daisyUI-inspired playful pastel tiles and bold reader actions. */
+html[data-design-variant="O"] body {
+  --bg: #fff7ed;
+  --ink: #312e45;
+  --line: #e9dce8;
+  --prototype-panel: #fff;
+  --prototype-soft: #ffe4e6;
+  --prototype-ink: #9d174d;
+  --prototype-accent: #db2777;
+  --prototype-line: #e9dce8;
+  --prototype-radius: 20px;
+  --prototype-shadow: 0 8px 0 #312e4510;
+  background: var(--bg);
+  color: var(--ink);
+}
+html[data-design-variant="O"] .sidebar {
+  width: 210px;
+  border-right: 0;
+  background: #ffe4e6;
+}
+html[data-design-variant="O"] .main-wrap {
+  margin-left: 210px;
+}
+html[data-design-variant="O"] .brand-icon,
+html[data-design-variant="O"] .path-dot.done {
+  border-radius: 50%;
+  background: #db2777;
+}
+html[data-design-variant="O"] .nav-item.selected,
+html[data-design-variant="O"] .course-option.active {
+  border-radius: 16px;
+  background: #fff;
+  color: #9d174d;
+}
+html[data-design-variant="O"] .topbar {
+  background: #fff7ed;
+}
+html[data-design-variant="O"] .track-map {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+html[data-design-variant="O"] .track-card:nth-child(1) {
+  grid-column: span 2;
+  background: #fce7f3;
+}
+html[data-design-variant="O"] .track-card:nth-child(2) {
+  background: #dbeafe;
+}
+html[data-design-variant="O"] .track-card:nth-child(3) {
+  background: #dcfce7;
+}
+html[data-design-variant="O"] .track-card:nth-child(4) {
+  background: #fef3c7;
+}
+html[data-design-variant="O"] .fullstack-destination {
+  grid-column: auto;
+  background: #ede9fe;
+  text-align: left;
+}
+html[data-design-variant="O"] .track-card,
+html[data-design-variant="O"] .course-option,
+html[data-design-variant="O"] .lesson-card,
+html[data-design-variant="O"] .stats {
+  border: 1px solid #e9dce8;
+  border-radius: 20px;
+  box-shadow: 0 8px 0 #312e4510;
+}
+html[data-design-variant="O"] .course-option.active {
+  border-color: #db2777;
+}
+html[data-design-variant="O"] .hero {
+  border-radius: 26px;
+  background: linear-gradient(115deg, #9d174d, #db2777 65%, #fb923c);
+}
+html[data-design-variant="O"] .hero-button,
+html[data-design-variant="O"] .tabs button.active {
+  border-radius: 16px;
+  background: #fff;
+  color: #9d174d;
+}
+html[data-design-variant="O"] .lesson-number {
+  border-radius: 16px;
+  background: #ffe4e6;
+  color: #9d174d;
+}
+html[data-design-variant="O"] .lesson-content .code-window {
+  border-radius: 16px;
+  background: #312e45;
+}
+html[data-design-variant="O"] .lesson-content .exercise {
+  background: #fce7f3;
+}
+
 @media (max-width: 950px) {
   html[data-design-variant="B"] .course-catalog {
     grid-template-columns: 1fr;
@@ -1019,6 +1688,24 @@ html[data-design-variant="I"] .lesson-number {
   html[data-design-variant="I"] .course-switcher {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  html[data-design-variant="K"] .course-catalog,
+  html[data-design-variant="M"] .course-catalog,
+  html[data-design-variant="N"] .course-catalog {
+    grid-template-columns: 1fr;
+  }
+  html[data-design-variant="K"] .track-map,
+  html[data-design-variant="N"] .track-map {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  html[data-design-variant="J"] .track-map,
+  html[data-design-variant="L"] .track-map {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  html[data-design-variant="K"] .fullstack-destination,
+  html[data-design-variant="N"] .fullstack-destination {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 700px) {
@@ -1028,9 +1715,21 @@ html[data-design-variant="I"] .lesson-number {
     justify-content: space-between;
     gap: 4px;
   }
-  .design-prototype-caption,
   .design-prototype-options span {
     display: none;
+  }
+  .design-prototype-caption {
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: calc(100vw - 30px);
+    overflow: hidden;
+    padding: 4px 10px;
+    border-radius: 7px;
+    background: #121a25;
+    font-size: 9px;
+    text-overflow: ellipsis;
   }
   .design-prototype-options button {
     min-width: 27px;
@@ -1050,7 +1749,13 @@ html[data-design-variant="I"] .lesson-number {
   html[data-design-variant="F"] .sidebar,
   html[data-design-variant="G"] .sidebar,
   html[data-design-variant="H"] .sidebar,
-  html[data-design-variant="I"] .sidebar {
+  html[data-design-variant="I"] .sidebar,
+  html[data-design-variant="J"] .sidebar,
+  html[data-design-variant="K"] .sidebar,
+  html[data-design-variant="L"] .sidebar,
+  html[data-design-variant="M"] .sidebar,
+  html[data-design-variant="N"] .sidebar,
+  html[data-design-variant="O"] .sidebar {
     position: fixed;
     width: 244px;
     min-height: 100vh;
@@ -1066,17 +1771,25 @@ html[data-design-variant="I"] .lesson-number {
   html[data-design-variant="F"] .sidebar.mobile-open,
   html[data-design-variant="G"] .sidebar.mobile-open,
   html[data-design-variant="H"] .sidebar.mobile-open,
-  html[data-design-variant="I"] .sidebar.mobile-open {
+  html[data-design-variant="I"] .sidebar.mobile-open,
+  html[data-design-variant="J"] .sidebar.mobile-open,
+  html[data-design-variant="K"] .sidebar.mobile-open,
+  html[data-design-variant="L"] .sidebar.mobile-open,
+  html[data-design-variant="M"] .sidebar.mobile-open,
+  html[data-design-variant="N"] .sidebar.mobile-open,
+  html[data-design-variant="O"] .sidebar.mobile-open {
     visibility: visible;
     transform: translateX(0);
   }
   html[data-design-variant="B"] .sidebar nav,
-  html[data-design-variant="D"] .sidebar nav {
+  html[data-design-variant="D"] .sidebar nav,
+  html[data-design-variant="L"] .sidebar nav {
     display: block;
     margin: 25px 0 0;
   }
   html[data-design-variant="B"] .nav-item,
-  html[data-design-variant="D"] .nav-item {
+  html[data-design-variant="D"] .nav-item,
+  html[data-design-variant="L"] .nav-item {
     width: 100%;
     height: auto;
     display: flex;
@@ -1095,7 +1808,12 @@ html[data-design-variant="I"] .lesson-number {
   html[data-design-variant="D"] .main-wrap,
   html[data-design-variant="E"] .main-wrap,
   html[data-design-variant="F"] .main-wrap,
-  html[data-design-variant="H"] .main-wrap {
+  html[data-design-variant="H"] .main-wrap,
+  html[data-design-variant="J"] .main-wrap,
+  html[data-design-variant="K"] .main-wrap,
+  html[data-design-variant="M"] .main-wrap,
+  html[data-design-variant="N"] .main-wrap,
+  html[data-design-variant="O"] .main-wrap {
     margin-left: 0;
   }
   html[data-design-variant="B"] .menu-button,
@@ -1105,7 +1823,13 @@ html[data-design-variant="I"] .lesson-number {
   html[data-design-variant="F"] .menu-button,
   html[data-design-variant="G"] .menu-button,
   html[data-design-variant="H"] .menu-button,
-  html[data-design-variant="I"] .menu-button {
+  html[data-design-variant="I"] .menu-button,
+  html[data-design-variant="J"] .menu-button,
+  html[data-design-variant="K"] .menu-button,
+  html[data-design-variant="L"] .menu-button,
+  html[data-design-variant="M"] .menu-button,
+  html[data-design-variant="N"] .menu-button,
+  html[data-design-variant="O"] .menu-button {
     display: flex;
   }
   html[data-design-variant="B"] .track-map,
@@ -1114,7 +1838,12 @@ html[data-design-variant="I"] .lesson-number {
   html[data-design-variant="F"] .track-map,
   html[data-design-variant="G"] .track-map,
   html[data-design-variant="H"] .track-map,
-  html[data-design-variant="I"] .track-map {
+  html[data-design-variant="I"] .track-map,
+  html[data-design-variant="J"] .track-map,
+  html[data-design-variant="K"] .track-map,
+  html[data-design-variant="L"] .track-map,
+  html[data-design-variant="N"] .track-map,
+  html[data-design-variant="O"] .track-map {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   html[data-design-variant="D"] .track-map {
@@ -1132,8 +1861,23 @@ html[data-design-variant="I"] .lesson-number {
   }
   html[data-design-variant="G"] .fullstack-destination,
   html[data-design-variant="H"] .fullstack-destination,
-  html[data-design-variant="I"] .fullstack-destination {
+  html[data-design-variant="I"] .fullstack-destination,
+  html[data-design-variant="J"] .fullstack-destination,
+  html[data-design-variant="K"] .fullstack-destination,
+  html[data-design-variant="L"] .fullstack-destination,
+  html[data-design-variant="N"] .fullstack-destination,
+  html[data-design-variant="O"] .fullstack-destination {
     grid-column: 1 / -1;
+  }
+  html[data-design-variant="O"] .track-card:nth-child(1) {
+    grid-column: 1 / -1;
+  }
+  html[data-design-variant="J"] .course-switcher,
+  html[data-design-variant="K"] .course-switcher,
+  html[data-design-variant="L"] .course-switcher,
+  html[data-design-variant="N"] .course-switcher,
+  html[data-design-variant="O"] .course-switcher {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   html[data-design-variant="B"] .lesson-cards,
   html[data-design-variant="C"] .lesson-cards,
