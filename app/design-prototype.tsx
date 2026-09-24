@@ -3,12 +3,14 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-// Prototype: four DevPath styles on the existing route, switchable with ?variant=.
+// Prototype: six DevPath styles on the existing route, switchable with ?variant=.
 const variants = [
   { key: "A", name: "Original Studio" },
   { key: "B", name: "Editorial" },
   { key: "C", name: "Developer Workspace" },
   { key: "D", name: "Bright Academy" },
+  { key: "E", name: "Study Planner" },
+  { key: "F", name: "Bold Graphic" },
 ] as const;
 
 type Variant = (typeof variants)[number]["key"];
@@ -69,7 +71,9 @@ export function DesignPrototypeSwitcher() {
 
   return (
     <div className="design-prototype-switcher" aria-label="เลือกตัวอย่างดีไซน์">
-      <span className="design-prototype-caption">DESIGN PROTOTYPE</span>
+      <span className="design-prototype-caption">
+        STYLE {variant} · {variants.find((item) => item.key === variant)?.name}
+      </span>
       <button
         type="button"
         className="design-prototype-arrow"
@@ -86,9 +90,9 @@ export function DesignPrototypeSwitcher() {
             className={item.key === variant ? "active" : ""}
             onClick={() => choose(item.key)}
             aria-pressed={item.key === variant}
+            aria-label={`แบบ ${item.key} ${item.name}`}
           >
             <strong>{item.key}</strong>
-            <span>{item.name}</span>
           </button>
         ))}
       </div>

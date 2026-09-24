@@ -18,8 +18,8 @@
 }
 .design-prototype-caption {
   padding: 0 11px;
-  color: #a5b5bf;
-  font-size: 9px;
+  color: #dce7ed;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 1.2px;
   white-space: nowrap;
@@ -45,8 +45,9 @@
 .design-prototype-options button {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 8px 11px;
+  justify-content: center;
+  min-width: 35px;
+  padding: 8px;
   border-radius: 10px;
   background: transparent;
   white-space: nowrap;
@@ -421,6 +422,305 @@ html[data-design-variant="D"] .lesson-cards {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+/* E: focused study planner with compact track tabs and a lesson agenda. */
+html[data-design-variant="E"] body {
+  --bg: #f2f6f8;
+  --ink: #213b48;
+  --line: #d5e1e6;
+  background: var(--bg);
+  color: var(--ink);
+}
+html[data-design-variant="E"] .sidebar {
+  width: 224px;
+  background: #f9fcfd;
+}
+html[data-design-variant="E"] .main-wrap {
+  margin-left: 224px;
+}
+html[data-design-variant="E"] .brand-icon,
+html[data-design-variant="E"] .path-dot.done {
+  background: #256d86;
+}
+html[data-design-variant="E"] .nav-item.selected {
+  background: #dceff5;
+  color: #195b72;
+}
+html[data-design-variant="E"] .topbar {
+  background: #f9fcfd;
+}
+html[data-design-variant="E"] main {
+  max-width: 1320px;
+  padding-top: 26px;
+}
+html[data-design-variant="E"] main:has(.curriculum-grid) {
+  display: flex;
+  flex-direction: column;
+}
+html[data-design-variant="E"] .course-catalog {
+  order: 0;
+}
+html[data-design-variant="E"] .page-heading {
+  order: 1;
+}
+html[data-design-variant="E"] .curriculum-grid {
+  order: 2;
+}
+html[data-design-variant="E"] .stats {
+  order: 3;
+}
+html[data-design-variant="E"] .adaptive-coach {
+  order: 4;
+}
+html[data-design-variant="E"] .further-learning {
+  order: 5;
+}
+html[data-design-variant="E"] main footer {
+  order: 6;
+}
+html[data-design-variant="E"] .course-catalog {
+  margin-bottom: 18px;
+  padding: 22px;
+  border: 1px solid #d5e1e6;
+  border-radius: 14px;
+  background: #fff;
+}
+html[data-design-variant="E"] .catalog-heading {
+  margin-bottom: 8px;
+}
+html[data-design-variant="E"] .catalog-heading h2 {
+  font-size: 19px;
+}
+html[data-design-variant="E"] .track-map,
+html[data-design-variant="E"] .course-switcher {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+  scrollbar-width: thin;
+}
+html[data-design-variant="E"] .track-card {
+  flex: 0 0 170px;
+  min-height: 82px;
+  padding: 12px;
+  border: 1px solid #cbdfe6;
+  border-radius: 9px;
+  background: #eaf4f7;
+}
+html[data-design-variant="E"] .track-card strong {
+  font-size: 12px;
+}
+html[data-design-variant="E"] .track-card small {
+  font-size: 9px;
+}
+html[data-design-variant="E"] .fullstack-destination {
+  background: #dcecf2;
+  text-align: left;
+}
+html[data-design-variant="E"] .course-option {
+  flex: 0 0 145px;
+  min-height: 76px;
+  padding: 11px;
+  border: 1px solid #d5e1e6;
+  border-radius: 8px;
+  background: white;
+}
+html[data-design-variant="E"] .course-option.active {
+  border-color: #256d86;
+  background: #e1f2f7;
+}
+html[data-design-variant="E"] .hero {
+  display: none;
+}
+html[data-design-variant="E"] .page-heading {
+  margin: 24px 0 14px;
+}
+html[data-design-variant="E"] .page-heading h1 {
+  font-size: 34px;
+}
+html[data-design-variant="E"] .stats {
+  margin-bottom: 24px;
+  border: 1px solid #d5e1e6;
+  border-radius: 12px;
+  background: #fff;
+}
+html[data-design-variant="E"] .curriculum-grid {
+  grid-template-columns: minmax(0, 1fr) 235px;
+  gap: 20px;
+}
+html[data-design-variant="E"] .lesson-cards {
+  gap: 0;
+  border-left: 3px solid #86bfce;
+  margin-left: 24px;
+}
+html[data-design-variant="E"] .lesson-card {
+  min-height: 90px;
+  border: 0;
+  border-bottom: 1px solid #d5e1e6;
+  border-radius: 0;
+  background: #fff;
+  padding: 16px 18px;
+}
+html[data-design-variant="E"] .lesson-number {
+  width: 40px;
+  height: 40px;
+  margin-left: -43px;
+  border: 3px solid #86bfce;
+  border-radius: 50%;
+  background: #fff;
+  color: #195b72;
+  font-size: 14px;
+}
+
+/* F: high-contrast graphic poster with hard edges and a branching mosaic. */
+html[data-design-variant="F"] body {
+  --bg: #fff5d9;
+  --ink: #171717;
+  --line: #171717;
+  background: var(--bg);
+  color: var(--ink);
+}
+html[data-design-variant="F"] .sidebar {
+  width: 194px;
+  padding: 26px 15px 0;
+  border-right: 3px solid #171717;
+  background: #ffcf30;
+}
+html[data-design-variant="F"] .main-wrap {
+  margin-left: 194px;
+}
+html[data-design-variant="F"] .brand {
+  font-size: 25px;
+}
+html[data-design-variant="F"] .brand-icon {
+  border: 2px solid #171717;
+  border-radius: 0;
+  background: #171717;
+}
+html[data-design-variant="F"] .workspace-label,
+html[data-design-variant="F"] .nav-item,
+html[data-design-variant="F"] .path-list button {
+  color: #171717;
+}
+html[data-design-variant="F"] .nav-item.selected {
+  border: 2px solid #171717;
+  border-radius: 0;
+  background: #fff;
+  color: #171717;
+  box-shadow: 4px 4px 0 #171717;
+}
+html[data-design-variant="F"] .sidebar-divider {
+  background: #171717;
+}
+html[data-design-variant="F"] .daily-card {
+  border: 2px solid #171717;
+  border-radius: 0;
+  background: #fff5d9;
+  color: #171717;
+  box-shadow: 4px 4px 0 #171717;
+}
+html[data-design-variant="F"] .topbar {
+  border-bottom: 3px solid #171717;
+  background: #fff5d9;
+}
+html[data-design-variant="F"] .course-catalog {
+  padding: 24px;
+  border: 3px solid #171717;
+  background: #fff;
+  box-shadow: 9px 9px 0 #171717;
+}
+html[data-design-variant="F"] .catalog-heading h2 {
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+html[data-design-variant="F"] .track-map {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+html[data-design-variant="F"] .track-card {
+  min-height: 142px;
+  padding: 16px;
+  border: 2px solid #171717;
+  border-radius: 0;
+  background: #ffcf30;
+}
+html[data-design-variant="F"] .track-card:nth-child(1) {
+  grid-column: span 2;
+  background: #ff7761;
+}
+html[data-design-variant="F"] .track-card:nth-child(2) {
+  background: #c7f28d;
+}
+html[data-design-variant="F"] .track-card:nth-child(3) {
+  background: #9ddaff;
+}
+html[data-design-variant="F"] .track-card:nth-child(4) {
+  background: #e5c8ff;
+}
+html[data-design-variant="F"] .track-card:nth-child(5) {
+  grid-column: auto;
+  background: #fff5d9;
+  text-align: left;
+}
+html[data-design-variant="F"] .track-card strong {
+  color: #171717;
+  font-size: 18px;
+  font-weight: 800;
+}
+html[data-design-variant="F"] .track-card small,
+html[data-design-variant="F"] .track-card > span {
+  color: #303030;
+}
+html[data-design-variant="F"] .course-switcher {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+html[data-design-variant="F"] .course-option,
+html[data-design-variant="F"] .lesson-card {
+  border: 2px solid #171717;
+  border-radius: 0;
+  background: #fff;
+  color: #171717;
+  box-shadow: 4px 4px 0 #171717;
+}
+html[data-design-variant="F"] .course-option.active {
+  background: #ffcf30;
+}
+html[data-design-variant="F"] .hero {
+  border: 3px solid #171717;
+  border-radius: 0;
+  background: #ff7761;
+  color: #171717;
+  box-shadow: 9px 9px 0 #171717;
+}
+html[data-design-variant="F"] .hero h2 {
+  font-size: clamp(48px, 5vw, 76px);
+  font-weight: 800;
+  letter-spacing: -3px;
+}
+html[data-design-variant="F"] .hero-button {
+  border: 2px solid #171717;
+  border-radius: 0;
+  background: #ffcf30;
+  color: #171717;
+  box-shadow: 4px 4px 0 #171717;
+}
+html[data-design-variant="F"] .lesson-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+html[data-design-variant="F"] .lesson-card {
+  flex-direction: column;
+  align-items: flex-start;
+}
+html[data-design-variant="F"] .lesson-number {
+  border: 2px solid #171717;
+  border-radius: 0;
+  background: #ffcf30;
+  color: #171717;
+}
+
 @media (max-width: 950px) {
   html[data-design-variant="B"] .course-catalog {
     grid-template-columns: 1fr;
@@ -433,6 +733,9 @@ html[data-design-variant="D"] .lesson-cards {
   }
   html[data-design-variant="C"] .main-wrap {
     margin-left: 210px;
+  }
+  html[data-design-variant="E"] .curriculum-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -452,7 +755,9 @@ html[data-design-variant="D"] .lesson-cards {
   }
   html[data-design-variant="B"] .sidebar,
   html[data-design-variant="C"] .sidebar,
-  html[data-design-variant="D"] .sidebar {
+  html[data-design-variant="D"] .sidebar,
+  html[data-design-variant="E"] .sidebar,
+  html[data-design-variant="F"] .sidebar {
     position: fixed;
     width: 244px;
     min-height: 100vh;
@@ -463,7 +768,9 @@ html[data-design-variant="D"] .lesson-cards {
   }
   html[data-design-variant="B"] .sidebar.mobile-open,
   html[data-design-variant="C"] .sidebar.mobile-open,
-  html[data-design-variant="D"] .sidebar.mobile-open {
+  html[data-design-variant="D"] .sidebar.mobile-open,
+  html[data-design-variant="E"] .sidebar.mobile-open,
+  html[data-design-variant="F"] .sidebar.mobile-open {
     visibility: visible;
     transform: translateX(0);
   }
@@ -489,17 +796,22 @@ html[data-design-variant="D"] .lesson-cards {
     display: block;
   }
   html[data-design-variant="C"] .main-wrap,
-  html[data-design-variant="D"] .main-wrap {
+  html[data-design-variant="D"] .main-wrap,
+  html[data-design-variant="E"] .main-wrap,
+  html[data-design-variant="F"] .main-wrap {
     margin-left: 0;
   }
   html[data-design-variant="B"] .menu-button,
   html[data-design-variant="C"] .menu-button,
-  html[data-design-variant="D"] .menu-button {
+  html[data-design-variant="D"] .menu-button,
+  html[data-design-variant="E"] .menu-button,
+  html[data-design-variant="F"] .menu-button {
     display: flex;
   }
   html[data-design-variant="B"] .track-map,
   html[data-design-variant="C"] .track-map,
-  html[data-design-variant="D"] .track-map {
+  html[data-design-variant="D"] .track-map,
+  html[data-design-variant="F"] .track-map {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   html[data-design-variant="D"] .track-map {
@@ -511,9 +823,14 @@ html[data-design-variant="D"] .lesson-cards {
   html[data-design-variant="D"] .track-card:nth-child(5) {
     grid-column: 1 / -1;
   }
+  html[data-design-variant="F"] .track-card:nth-child(1),
+  html[data-design-variant="F"] .track-card:nth-child(5) {
+    grid-column: 1 / -1;
+  }
   html[data-design-variant="B"] .lesson-cards,
   html[data-design-variant="C"] .lesson-cards,
-  html[data-design-variant="D"] .lesson-cards {
+  html[data-design-variant="D"] .lesson-cards,
+  html[data-design-variant="F"] .lesson-cards {
     grid-template-columns: 1fr;
   }
   html[data-design-variant="B"] .hero-content {
