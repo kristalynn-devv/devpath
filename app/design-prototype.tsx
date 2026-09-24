@@ -27,11 +27,11 @@ type Variant = (typeof variants)[number]["key"];
 
 function readVariant(): Variant {
   const value = new URLSearchParams(window.location.search).get("variant");
-  return variants.find((item) => item.key === value)?.key ?? "A";
+  return variants.find((item) => item.key === value)?.key ?? "L";
 }
 
 export function DesignPrototypeSwitcher() {
-  const [variant, setVariant] = useState<Variant>("A");
+  const [variant, setVariant] = useState<Variant>("L");
   const optionsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export function DesignPrototypeSwitcher() {
         (options.clientWidth - active.clientWidth) / 2;
     }
     return () => {
-      delete document.documentElement.dataset.designVariant;
+      document.documentElement.dataset.designVariant = "L";
     };
   }, [variant]);
 

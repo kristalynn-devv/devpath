@@ -1,5 +1,14 @@
 import { test, expect } from "@playwright/test";
 
+test("selected L style is the production default", async ({ page }) => {
+  await page.goto("/?variant=J#course-4");
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-design-variant",
+    "L",
+  );
+  await expect(page.locator(".design-prototype-switcher")).toHaveCount(0);
+});
+
 test("lessons, search and empty filters", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
