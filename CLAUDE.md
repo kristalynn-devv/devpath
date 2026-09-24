@@ -4,13 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-PyPath — a Thai-language Next.js web app teaching Python for AI. All learner-facing copy is Thai;
+DevPath — a Thai-language Next.js learning app for Python & AI, JavaScript/TypeScript, Node.js, and Next.js. All learner-facing copy is Thai;
 keep it that way. There is no backend, no accounts, no code execution in the browser — progress and
-assessment results live only in `localStorage`. `PRD.md` is the scope contract (v0.1, Thai) and
+assessment results live only in `localStorage`. `PRD.md` is the scope contract (current release and history, Thai) and
 `HANDOFF.md` carries the running build state between sessions; read both before changing behaviour.
 
-**This directory is not a git repository.** There is no history to diff against; `HANDOFF.md` is the
-only record of what changed and why.
+This directory is the `devpath` git repository; use its history and diff when changing behavior.
 
 ## Commands
 
@@ -52,7 +51,7 @@ over CSS variables in `:root`. Tests select by role, Thai accessible name, or th
 renaming a class or a Thai label breaks tests.
 
 **Routing is the URL hash, not the router.** Course 1 uses `#lesson-<n>` / `#curriculum`; courses 2–5
-use `#course-<id>/lesson-<n>` / `#course-<id>`. `Home` parses `#course-(\d+)` to pick the course,
+use `#course-<id>/lesson-<n>` / `#course-<id>`. The new tracks use `#javascript/course-1`, `#node/course-1`, and `#nextjs/course-1` with optional `/lesson-<n>`. `Home` parses the hash to pick the course,
 `CourseView` parses `lesson-(\d+)` (1-based in the URL, 0-based in state) via `hashchange`. Invalid
 indices fall back to the catalog rather than throwing.
 
@@ -60,7 +59,8 @@ indices fall back to the catalog rather than throwing.
 
 - `app/course.ts` — `Lesson` type + course 1's 8 lessons.
 - `app/advanced-courses.ts` — `Course` type + courses 2–5, 8 lessons each.
-- `app/courses.ts` — assembles course 1 from `lessons` and spreads `advancedCourses`; this is what
+- `app/new-tracks.ts` — JavaScript/TypeScript, Node.js and Next.js courses, 8 lessons each.
+- `app/courses.ts` — assembles course 1 and spreads `advancedCourses` and `newCourses`; this is what
   the UI imports.
 
 A `Lesson` is self-contained prose + one `code`/`output` pair + one exercise + one multiple-choice
@@ -90,6 +90,8 @@ recommended lesson index.
 | `pypath-progress-v1` | course 1 completed lesson indices |
 | `pypath-course-<id>-v1` | courses 2–5 completed lesson indices |
 | `pypath-evidence-v1-course-<id>` | assessment `Evidence` for that course |
+| `devpath-<track>-course-<id>-v1` | courses 6–8 completed lesson indices |
+| `devpath-evidence-v1-<track>-course-<id>` | courses 6–8 assessment `Evidence` |
 
 Quiz answers from the lesson reader are stored under `quick-<lessonIndex>` inside the same evidence
 blob but are kept out of placement grading. Every read path must survive corrupt or hostile values
@@ -105,3 +107,13 @@ instead of throwing. Bump the `v1` suffix if a shape changes.
   `HANDOFF.md`.
 - Tests write screenshots to `.leancode/screenshots/` (gitignored) — keep those paths if you touch
   the layout tests.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

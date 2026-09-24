@@ -20,7 +20,10 @@ export function useAssessment(course: Course) {
   const [evidence, setEvidence] = useState<Evidence>({});
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
-  const key = `pypath-evidence-v1-course-${course.id}`;
+  const key =
+    course.id <= 5
+      ? `pypath-evidence-v1-course-${course.id}`
+      : `devpath-evidence-v1-${course.track}-course-${course.id}`;
   useEffect(() => {
     try {
       setEvidence(readEvidence(localStorage.getItem(key), [...bank, ...quick]));

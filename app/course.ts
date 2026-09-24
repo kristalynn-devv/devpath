@@ -1,4 +1,5 @@
 export type Lesson = {
+  language?: "python" | "javascript" | "typescript" | "tsx";
   title: string;
   subtitle: string;
   tag: string;

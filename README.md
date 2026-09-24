@@ -1,22 +1,21 @@
-# PyPath — Python for AI
+# DevPath — Learn. Build. Grow.
 
-A Thai-language web app for learning Python through to AI engineering, from first syntax to
-shipping.
+A Thai-language learning app with three hands-on paths: Python & AI, Node.js backend, and Next.js web development. The JavaScript/TypeScript foundation is shared by the Node.js and Next.js paths.
 
 No accounts, no backend, no code execution in the browser. Progress and quiz results live in the
 learner's own `localStorage` and go nowhere else.
 
 ## What's in it
 
-- **5 courses, 40 lessons** — fundamentals → ML → deep learning → LLM/RAG → AI engineering
+- **8 courses, 64 lessons** — Python & AI (40), JavaScript/TypeScript (8), Node.js (8), and Next.js (8)
 - Concepts, worked code examples, exercises, and a comprehension quiz in every lesson
-- **Adaptive coach** — recommends where to start from your first pass at a three-tier
-  assessment bank, one per course
+- **Adaptive coach** — recommends where to start from a three-tier assessment in each course
+- A learning map lets learners choose a path freely; completing the JavaScript/TypeScript foundation is recommended, not required
 - Mobile and desktop; course and lesson selection is driven by the URL hash
 
 ## Getting started
 
-Node.js 18 or newer.
+Node.js 24 LTS is recommended. The app is built with Next.js 16 and React 19.
 
 ```bash
 npm install
@@ -37,14 +36,14 @@ Deploying to Cloudflare Pages: framework preset **Next.js (Static HTML Export)**
 
 ## Commands
 
-| Command | What it does |
-| --- | --- |
-| `npm run dev` | Development server |
-| `npm run build` | Production build — required before `npm test` |
-| `npm run start` | Serve the production build |
-| `npm run typecheck` | TypeScript, strict |
-| `npm test` | Playwright — needs Chrome and a current build |
-| `npm run format` | Prettier |
+| Command                             | What it does                                          |
+| ----------------------------------- | ----------------------------------------------------- |
+| `npm run dev`                       | Development server                                    |
+| `npm run build`                     | Production build — required before `npm test`         |
+| `npm run start`                     | Serve the production build                            |
+| `npm run typecheck`                 | TypeScript, strict                                    |
+| `npm test`                          | Playwright — needs Chrome and a current build         |
+| `npm run format`                    | Prettier                                              |
 | `python3 scripts/check-examples.py` | Lint and actually run the code samples in courses 2–5 |
 
 That last one exists because a course full of examples that do not run is worse than no examples.

@@ -1,6 +1,7 @@
 import type { Lesson } from "./course";
 export type Course = {
   id: number;
+  track?: "python" | "javascript" | "node" | "nextjs";
   title: string;
   subtitle: string;
   prerequisite: string;

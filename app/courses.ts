@@ -1,8 +1,10 @@
 import { lessons } from "./course";
 import { advancedCourses, type Course } from "./advanced-courses";
+import { newCourses } from "./new-tracks";
 export const courses: Course[] = [
   {
     id: 1,
+    track: "python",
     title: "Python for AI",
     subtitle: "เริ่มจากบรรทัดแรก สู่โปรเจกต์ AI แรก",
     prerequisite: "เริ่มจากศูนย์ได้ เตรียม Python 3 หรือ notebook สำหรับฝึก",
@@ -19,4 +21,5 @@ export const courses: Course[] = [
     lessons,
   },
   ...advancedCourses,
+  ...newCourses,
 ];

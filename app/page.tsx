@@ -27,8 +27,14 @@ export default function Home() {
   const [courseId, setCourseId] = useState(1);
   useEffect(() => {
     const sync = () => {
-      const match = window.location.hash.match(/^#course-(\d+)(?:$|\/)/);
-      const id = match ? Number(match[1]) : 1;
+      const hash = window.location.hash;
+      const legacy = hash.match(/^#course-(\d+)(?:$|\/)/);
+      const modern = hash.match(/^#(javascript|node|nextjs)\/course-1(?:$|\/)/);
+      const id = modern
+        ? ({ javascript: 6, node: 7, nextjs: 8 }[modern[1]] ?? 1)
+        : legacy
+          ? Number(legacy[1])
+          : 1;
       setCourseId(courses.some((c) => c.id === id) ? id : 1);
     };
     sync();
@@ -42,7 +48,11 @@ function CourseView({ course }: { course: Course }) {
   const lessons = course.lessons;
   const assessment = useAssessment(course);
   const STORAGE =
-    course.id === 1 ? "pypath-progress-v1" : `pypath-course-${course.id}-v1`;
+    course.id <= 5
+      ? course.id === 1
+        ? "pypath-progress-v1"
+        : `pypath-course-${course.id}-v1`
+      : `devpath-${course.track}-course-${course.id}-v1`;
   const [completed, setCompleted] = useState<number[]>([]);
   const [ready, setReady] = useState(false);
   const [storageError, setStorageError] = useState(false);
@@ -105,16 +115,23 @@ function CourseView({ course }: { course: Course }) {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
   const open = (id: number) => {
-    window.location.hash =
-      course.id === 1
-        ? `lesson-${id + 1}`
-        : `course-${course.id}/lesson-${id + 1}`;
+    const prefix =
+      course.id <= 5
+        ? course.id === 1
+          ? ""
+          : `course-${course.id}/`
+        : `${course.track}/course-1/`;
+    window.location.hash = `${prefix}lesson-${id + 1}`;
     setMobile(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const home = () => {
     window.location.hash =
-      course.id === 1 ? "curriculum" : `course-${course.id}`;
+      course.id <= 5
+        ? course.id === 1
+          ? "curriculum"
+          : `course-${course.id}`
+        : `${course.track}/course-1`;
     setMobile(false);
   };
   const next = lessons.findIndex((_, i) => !completed.includes(i));
@@ -146,14 +163,20 @@ function CourseView({ course }: { course: Course }) {
       </a>
       <aside className={`sidebar ${mobile ? "mobile-open" : ""}`}>
         <a
-          href={course.id === 1 ? "#curriculum" : `#course-${course.id}`}
+          href={
+            course.id <= 5
+              ? course.id === 1
+                ? "#curriculum"
+                : `#course-${course.id}`
+              : `#${course.track}/course-1`
+          }
           className="brand"
           onClick={home}
         >
           <span className="brand-icon">
             <Code2 size={23} />
           </span>
-          PyPath<span className="brand-dot">.</span>
+          DevPath<span className="brand-dot">.</span>
         </a>
         <div className="workspace-label">YOUR LEARNING SPACE</div>
         <nav aria-label="เมนูหลัก">
@@ -213,7 +236,13 @@ function CourseView({ course }: { course: Course }) {
             <p>
               วันละ 45 นาที ก็เข้าใกล้
               <br />
-              โปรเจกต์ AI แรกได้อีกนิด
+              {course.track === "node"
+                ? "Task API ของคุณได้อีกนิด"
+                : course.track === "nextjs"
+                  ? "Dashboard ของคุณได้อีกนิด"
+                  : course.track === "javascript"
+                    ? "โปรเจกต์ JavaScript ได้อีกนิด"
+                    : "โปรเจกต์ AI แรกได้อีกนิด"}
             </p>
             <div className="days">
               {["จ", "อ", "พ", "พฤ", "ศ"].map((d) => (
@@ -223,9 +252,9 @@ function CourseView({ course }: { course: Course }) {
             <small>แผนแนะนำ · 5 วันต่อสัปดาห์</small>
           </div>
           <div className="profile">
-            <span className="avatar">P</span>
+            <span className="avatar">D</span>
             <div>
-              <strong>Python Explorer</strong>
+              <strong>DevPath Learner</strong>
               <small>พร้อมเรียนรู้สิ่งใหม่</small>
             </div>
             <span className="online-dot" />
@@ -270,10 +299,37 @@ function CourseView({ course }: { course: Course }) {
           <section className="course-catalog" aria-label="เลือกคอร์ส">
             <div className="catalog-heading">
               <div>
-                <span className="eyebrow">YOUR AI LEARNING JOURNEY</span>
-                <h2>5 คอร์ส · 40 บท · เรียนรู้ผ่านผลงาน</h2>
+                <span className="eyebrow">YOUR DEVELOPER LEARNING MAP</span>
+                <h2>3 เส้นทาง · 8 คอร์ส · 64 บทเรียน</h2>
               </div>
-              <span>พื้นฐาน → ประยุกต์ → สร้างระบบ</span>
+              <span>เลือกสายได้ตามเป้าหมาย · ไม่ล็อกเส้นทาง</span>
+            </div>
+            <div className="track-map">
+              <a href="#curriculum" className="track-card">
+                <span>01 · PYTHON &amp; AI</span>
+                <strong>ข้อมูล → AI</strong>
+                <small>5 คอร์ส · 40 บท</small>
+              </a>
+              <a href="#javascript/course-1" className="track-card">
+                <span>02 · SHARED FOUNDATION</span>
+                <strong>JavaScript &amp; TypeScript</strong>
+                <small>พื้นฐานร่วม · 8 บท</small>
+              </a>
+              <a href="#node/course-1" className="track-card">
+                <span>03 · NODE.JS BACKEND</span>
+                <strong>Task API</strong>
+                <small>ต่อยอดจากพื้นฐาน · 8 บท</small>
+              </a>
+              <a href="#nextjs/course-1" className="track-card">
+                <span>04 · NEXT.JS WEB</span>
+                <strong>Task Dashboard</strong>
+                <small>ต่อยอดจากพื้นฐาน · 8 บท</small>
+              </a>
+              <div className="track-card fullstack-destination">
+                <span>OPTIONAL DESTINATION</span>
+                <strong>Full-stack Web</strong>
+                <small>เชื่อม Task API กับ Task Dashboard</small>
+              </div>
             </div>
             <div className="course-switcher">
               {courses.map((c) => (
@@ -284,7 +340,13 @@ function CourseView({ course }: { course: Course }) {
                       ? "course-option active"
                       : "course-option"
                   }
-                  href={c.id === 1 ? "#curriculum" : `#course-${c.id}`}
+                  href={
+                    c.id <= 5
+                      ? c.id === 1
+                        ? "#curriculum"
+                        : `#course-${c.id}`
+                      : `#${c.track}/course-1`
+                  }
                   aria-current={c.id === course.id ? "page" : undefined}
                 >
                   <span>COURSE 0{c.id}</span>
@@ -367,8 +429,25 @@ function CourseView({ course }: { course: Course }) {
                           <i />
                           <i />
                         </span>
-                        <small>lesson_{active + 1}.py</small>
-                        <span>Python 3</span>
+                        <small>
+                          lesson_{active + 1}.
+                          {lesson.language === "tsx"
+                            ? "tsx"
+                            : lesson.language === "typescript"
+                              ? "ts"
+                              : lesson.language === "javascript"
+                                ? "js"
+                                : "py"}
+                        </small>
+                        <span>
+                          {lesson.language === "tsx"
+                            ? "Next.js · TSX"
+                            : lesson.language === "typescript"
+                              ? "TypeScript · Node.js 24"
+                              : lesson.language === "javascript"
+                                ? "JavaScript · Node.js 24"
+                                : "Python 3"}
+                        </span>
                       </div>
                       <pre>
                         <code>{lesson.code}</code>
@@ -379,8 +458,14 @@ function CourseView({ course }: { course: Course }) {
                       <pre>{lesson.output}</pre>
                     </div>
                     <p className="code-note">
-                      นำโค้ดไปรันใน Python 3 หรือ notebook ของคุณ
-                      เว็บนี้แสดงตัวอย่างและผลลัพธ์ประกอบ
+                      {lesson.language === "tsx"
+                        ? "นำตัวอย่างไปใช้ใน Next.js App Router"
+                        : lesson.language === "typescript"
+                          ? "นำตัวอย่างไปรันด้วย Node.js 24 และ TypeScript"
+                          : lesson.language === "javascript"
+                            ? "นำตัวอย่างไปรันด้วย Node.js 24"
+                            : "นำโค้ดไปรันใน Python 3 หรือ notebook ของคุณ"}
+                      {" "}เว็บนี้แสดงตัวอย่างและผลลัพธ์ประกอบ
                     </p>
                   </section>
                   <section className="exercise">
@@ -538,14 +623,20 @@ function CourseView({ course }: { course: Course }) {
                   <h2>
                     {course.id === 1
                       ? "Python today."
-                      : [
-                          "",
-                          "",
-                          "Learn the patterns.",
-                          "Go deeper.",
-                          "Ground your AI.",
-                          "Build with evidence.",
-                        ][course.id]}
+                      : course.id > 5
+                        ? course.track === "node"
+                          ? "Build the API."
+                          : course.track === "nextjs"
+                            ? "Build the web."
+                            : "Start with JavaScript."
+                        : [
+                            "",
+                            "",
+                            "Learn the patterns.",
+                            "Go deeper.",
+                            "Ground your AI.",
+                            "Build with evidence.",
+                          ][course.id]}
                     <br />
                     <span>
                       {course.id === 1 ? "AI tomorrow." : "Build what’s next."}
@@ -590,27 +681,55 @@ function CourseView({ course }: { course: Course }) {
                       <span />
                       <span />
                       <span />
-                      <small>hello_future.py</small>
+                      <small>
+                        {course.id > 5 ? "hello_future.ts" : "hello_future.py"}
+                      </small>
                     </div>
                     <div className="art-code-body">
-                      <div>
-                        <em>01</em>
-                        <b>from</b> curiosity <b>import</b> growth
-                      </div>
-                      <div>
-                        <em>02</em>
-                      </div>
-                      <div>
-                        <em>03</em>skills = [<mark>"Python"</mark>,{" "}
-                        <mark>"AI"</mark>]
-                      </div>
-                      <div>
-                        <em>04</em>
-                        <b>for</b> day <b>in</b> learning:
-                      </div>
-                      <div>
-                        <em>05</em> you.<strong>grow</strong>()
-                      </div>
+                      {course.id > 5 ? (
+                        <>
+                          <div>
+                            <em>01</em>
+                            <b>const</b> path = <mark>"{course.title}"</mark>;
+                          </div>
+                          <div>
+                            <em>02</em>
+                          </div>
+                          <div>
+                            <em>03</em>
+                            <b>const</b> project ={" "}
+                            <mark>"{course.project}"</mark>;
+                          </div>
+                          <div>
+                            <em>04</em>
+                            console.log(path);
+                          </div>
+                          <div>
+                            <em>05</em> you.<strong>build</strong>(project)
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div>
+                            <em>01</em>
+                            <b>from</b> curiosity <b>import</b> growth
+                          </div>
+                          <div>
+                            <em>02</em>
+                          </div>
+                          <div>
+                            <em>03</em>skills = [<mark>"Python"</mark>,{" "}
+                            <mark>"AI"</mark>]
+                          </div>
+                          <div>
+                            <em>04</em>
+                            <b>for</b> day <b>in</b> learning:
+                          </div>
+                          <div>
+                            <em>05</em> you.<strong>grow</strong>()
+                          </div>
+                        </>
+                      )}
                       <div className="art-output">
                         <span>❯</span> Building your next possibility
                         <span className="cursor-block" />
@@ -657,7 +776,11 @@ function CourseView({ course }: { course: Course }) {
                     <strong>
                       1 <small>โปรเจกต์จบคอร์ส</small>
                     </strong>
-                    <p>สร้างผลงาน AI ของตัวเอง</p>
+                    <p>
+                      {course.id > 5
+                        ? `สร้าง ${course.project} ของตัวเอง`
+                        : "สร้างผลงาน AI ของตัวเอง"}
+                    </p>
                   </div>
                 </div>
               </section>
@@ -813,8 +936,20 @@ function CourseView({ course }: { course: Course }) {
                       {course.project}
                     </p>
                     <div className="project-tags">
-                      <span>Python</span>
-                      <span>คอร์ส {course.id}</span>
+                      <span>
+                        {course.track === "node"
+                          ? "Node.js"
+                          : course.track === "nextjs"
+                            ? "Next.js"
+                            : course.track === "javascript"
+                              ? "JavaScript · TypeScript"
+                              : "Python"}
+                      </span>
+                      <span>
+                        {course.id > 5
+                          ? `COURSE 0${course.id}`
+                          : `คอร์ส ${course.id}`}
+                      </span>
                       <span>Capstone</span>
                     </div>
                     <button onClick={() => open(7)}>
@@ -888,7 +1023,7 @@ function CourseView({ course }: { course: Course }) {
           <footer>
             <span>
               <Code2 size={15} />
-              PyPath · สร้างอนาคต ทีละบรรทัด
+              DevPath · สร้างอนาคต ทีละบรรทัด
             </span>
             <span>Made for curious minds.</span>
           </footer>

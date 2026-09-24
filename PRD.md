@@ -1,4 +1,31 @@
-# PyPath — Python for AI
+# DevPath — Learn. Build. Grow.
+
+## รุ่น 1 — หลักสูตรนักพัฒนา (2026-09)
+
+DevPath เป็นเว็บแอปบทเรียนภาษาไทย 3 เส้นทาง รวม 8 คอร์ส 64 บท: Python & AI เดิม 5 คอร์ส 40 บท, พื้นฐานร่วม JavaScript/TypeScript 8 บท, Node.js Backend 8 บท และ Next.js Web 8 บท ผู้เรียนเลือกสายได้โดยไม่ล็อกบทเรียน ตัวอย่างโค้ดแสดงให้อ่านและนำไปทดลองในเครื่อง ไม่ได้รันในเว็บ
+
+### เนื้อหาและผลลัพธ์
+
+- Python & AI: คง 40 บทและเส้นทางจากรุ่น 0.1–0.3
+- JavaScript/TypeScript: ตัวแปร ชนิดข้อมูล array/object ฟังก์ชัน การวนซ้ำ TypeScript async/Promise และโปรเจกต์ Task Board
+- Node.js 24 + TypeScript + Fastify: runtime/npm/ESM, event loop และ stream, HTTP/REST, API contract/validation/errors, SQLite CRUD กับ prepared statements, authentication/authorization, `node:test`/logging/graceful shutdown และ Task Management API capstone
+- Next.js 16 + React 19 + TypeScript: components/props/state/forms, App Router, Server/Client Components, data fetching/streaming/cache, Server Actions และ validation, Route Handlers/security, accessibility/metadata/Playwright และ Task Dashboard capstone
+- ผู้เรียนเชื่อม Task Dashboard กับ Task API ได้เป็น Full-stack Web หรือใช้ mock API เพื่อเรียน Next.js แยกสาย
+
+### การนำทางและความเข้ากันได้
+
+- หน้าแรกใช้แผนที่ Variant B แสดง 3 เส้นทาง พื้นฐานร่วม และจุดหมาย Full-stack Web แบบเลือกเรียน
+- คง URL hash, storage key และความคืบหน้า Python เดิม; เส้นทางใหม่ใช้ `#javascript/course-1/lesson-1`, `#node/course-1/lesson-1` และ `#nextjs/course-1/lesson-1` พร้อม namespace ความคืบหน้าแยกกัน
+- ทุกบทมีแนวคิด ตัวอย่างโค้ด ผลลัพธ์ แบบฝึกหัด และคำถามตรวจความเข้าใจ; การผ่านคำถามหรือการประเมินไม่ใช่การตรวจโค้ดโปรเจกต์จริง
+
+### การเผยแพร่และขอบเขตทางเทคนิค
+
+- ตัวเว็บ DevPath ใช้ Next.js App Router และ static export ไปที่ `out` เพื่อเผยแพร่ผ่าน Cloudflare Pages
+- ตัวอย่าง Server Actions และ Route Handlers ในคอร์ส Next.js ต้องสร้าง/รันในโปรเจกต์ Next.js ที่มี Node.js runtime; ฟีเจอร์เหล่านี้ไม่ทำงานภายใน static export ของเว็บบทเรียน
+- ตัวอย่าง Fastify/SQLite/auth ในคอร์ส Node.js เป็นบทเรียนและโจทย์โปรเจกต์ ไม่ใช่ backend ของ DevPath; ไม่มีบัญชีผู้ใช้หรือการซิงก์ความคืบหน้าข้ามเครื่องในรุ่นนี้
+- GitHub repository และ Cloudflare Pages project ใช้ชื่อ `devpath`; hostname เดิมยังใช้งานต่อได้
+
+## ประวัติข้อกำหนด — รุ่น 0.1 PyPath Python for AI
 ข้อกำหนดเว็บแอปบทเรียนภาษาไทย v0.1 — ขอบเขตที่ใช้พัฒนาหลังผู้ใช้ตอบตกลง
 
 ## เป้าหมายและผู้เรียน
@@ -65,7 +92,7 @@
 - โค้ดตัวอย่าง Python แสดงพร้อมผลลัพธ์ประกอบ การทดสอบข้างต้นตรวจเว็บ ไม่ได้รัน Python ทุกตัวอย่าง
 
 ## เปิดใช้งานในเครื่อง
-โปรเจกต์: `/Users/kristalyn/Documents/GitHub/python-ai-course`
+โปรเจกต์ปัจจุบัน: `/Users/kristalyn/Documents/GitHub/devpath`
 
 ใช้ `npm run dev` สำหรับพัฒนา หรือ `npm run build` แล้ว `npm run start` เพื่อเปิด production ที่ http://localhost:3000
 
