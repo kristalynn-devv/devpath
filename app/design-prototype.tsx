@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-// Prototype: six DevPath styles on the existing route, switchable with ?variant=.
+// Prototype: nine DevPath styles on the existing route, switchable with ?variant=.
 const variants = [
   { key: "A", name: "Original Studio" },
   { key: "B", name: "Editorial" },
@@ -11,6 +11,9 @@ const variants = [
   { key: "D", name: "Bright Academy" },
   { key: "E", name: "Study Planner" },
   { key: "F", name: "Bold Graphic" },
+  { key: "G", name: "shadcn/ui inspired" },
+  { key: "H", name: "Material inspired" },
+  { key: "I", name: "Bootstrap inspired" },
 ] as const;
 
 type Variant = (typeof variants)[number]["key"];
@@ -22,6 +25,7 @@ function readVariant(): Variant {
 
 export function DesignPrototypeSwitcher() {
   const [variant, setVariant] = useState<Variant>("A");
+  const optionsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sync = () => setVariant(readVariant());
@@ -32,6 +36,9 @@ export function DesignPrototypeSwitcher() {
 
   useEffect(() => {
     document.documentElement.dataset.designVariant = variant;
+    optionsRef.current
+      ?.querySelector("button.active")
+      ?.scrollIntoView({ block: "nearest", inline: "center" });
     return () => {
       delete document.documentElement.dataset.designVariant;
     };
@@ -82,7 +89,7 @@ export function DesignPrototypeSwitcher() {
       >
         <ArrowLeft size={16} />
       </button>
-      <div className="design-prototype-options">
+      <div className="design-prototype-options" ref={optionsRef}>
         {variants.map((item) => (
           <button
             key={item.key}
