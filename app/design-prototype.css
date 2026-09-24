@@ -1,0 +1,522 @@
+.design-prototype-switcher {
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100vw - 24px);
+  padding: 8px;
+  border: 1px solid #3b4652;
+  border-radius: 18px;
+  background: #121a25;
+  box-shadow: 0 18px 48px #10182055;
+  color: #fff;
+  font-family: "Manrope", "IBM Plex Sans Thai", sans-serif;
+}
+.design-prototype-caption {
+  padding: 0 11px;
+  color: #a5b5bf;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  white-space: nowrap;
+}
+.design-prototype-arrow,
+.design-prototype-options button {
+  border: 0;
+  color: inherit;
+}
+.design-prototype-arrow {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 34px;
+  height: 38px;
+  border-radius: 10px;
+  background: #273444;
+}
+.design-prototype-options {
+  display: flex;
+  gap: 4px;
+}
+.design-prototype-options button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 11px;
+  border-radius: 10px;
+  background: transparent;
+  white-space: nowrap;
+  font-size: 10px;
+}
+.design-prototype-options button.active {
+  background: #fff;
+  color: #17212a;
+}
+.design-prototype-options strong {
+  font-size: 12px;
+}
+
+/* B: editorial landing page with a horizontal header and two-column catalog. */
+html[data-design-variant="B"] body {
+  --bg: #f7f3eb;
+  --ink: #292d2b;
+  --line: #d8d2c6;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, "IBM Plex Sans Thai", serif;
+}
+html[data-design-variant="B"] .sidebar {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  min-height: 90px;
+  padding: 20px 5vw;
+  flex-direction: row;
+  align-items: center;
+  border-right: 0;
+  border-bottom: 1px solid var(--line);
+  background: #f7f3eb;
+}
+html[data-design-variant="B"] .sidebar .workspace-label,
+html[data-design-variant="B"] .sidebar .sidebar-divider,
+html[data-design-variant="B"] .sidebar .path-list,
+html[data-design-variant="B"] .sidebar .sidebar-bottom {
+  display: none;
+}
+html[data-design-variant="B"] .brand-icon {
+  border-radius: 50%;
+  background: #9b4e34;
+}
+html[data-design-variant="B"] .sidebar nav {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+html[data-design-variant="B"] .nav-item {
+  width: auto;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 100px;
+  color: #635e56;
+}
+html[data-design-variant="B"] .nav-item.selected {
+  background: #292d2b;
+  color: white;
+}
+html[data-design-variant="B"] .main-wrap {
+  margin-left: 0;
+}
+html[data-design-variant="B"] .topbar {
+  height: 55px;
+  padding: 0 5vw;
+  background: transparent;
+}
+html[data-design-variant="B"] main {
+  max-width: 1500px;
+  padding: 38px 5vw 110px;
+}
+html[data-design-variant="B"] .course-catalog {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(230px, 1fr);
+  gap: 20px 24px;
+}
+html[data-design-variant="B"] .catalog-heading,
+html[data-design-variant="B"] .prerequisite {
+  grid-column: 1 / -1;
+}
+html[data-design-variant="B"] .catalog-heading h2,
+html[data-design-variant="B"] .page-heading h1 {
+  font-size: clamp(30px, 3vw, 46px);
+  font-weight: 400;
+  letter-spacing: -1.5px;
+}
+html[data-design-variant="B"] .track-map {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  gap: 12px;
+}
+html[data-design-variant="B"] .track-card,
+html[data-design-variant="B"] .course-option,
+html[data-design-variant="B"] .lesson-card {
+  border: 1px solid #d8d2c6;
+  border-radius: 0;
+  background: #fffdf7;
+}
+html[data-design-variant="B"] .track-card {
+  min-height: 158px;
+  padding: 22px;
+}
+html[data-design-variant="B"] .track-card strong {
+  font-size: 20px;
+  font-weight: 400;
+}
+html[data-design-variant="B"] .fullstack-destination {
+  grid-column: 1 / -1;
+  min-height: 88px;
+  background: #eae0d2;
+}
+html[data-design-variant="B"] .course-switcher {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+html[data-design-variant="B"] .course-option {
+  min-height: 65px;
+  padding: 9px 16px;
+  border-bottom: 0;
+  gap: 2px;
+}
+html[data-design-variant="B"] .course-option:last-child {
+  border-bottom: 1px solid #d8d2c6;
+}
+html[data-design-variant="B"] .course-option.active {
+  background: #e9ded0;
+}
+html[data-design-variant="B"] .hero {
+  min-height: 300px;
+  border-radius: 0;
+  background: #9b4e34;
+}
+html[data-design-variant="B"] .hero-content {
+  width: 100%;
+  padding: 48px;
+}
+html[data-design-variant="B"] .hero-art {
+  display: none;
+}
+html[data-design-variant="B"] .hero h2 {
+  font-size: clamp(48px, 6vw, 86px);
+  font-weight: 400;
+}
+html[data-design-variant="B"] .lesson-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* C: dense dark workspace with a course matrix and compact lesson cards. */
+html[data-design-variant="C"] body {
+  --bg: #0b1220;
+  --ink: #eaf2fb;
+  --line: #29394d;
+  background: var(--bg);
+  color: var(--ink);
+}
+html[data-design-variant="C"] .sidebar {
+  width: 270px;
+  background: #111c2b;
+  border-color: #26384b;
+}
+html[data-design-variant="C"] .main-wrap {
+  margin-left: 270px;
+}
+html[data-design-variant="C"] .brand-icon,
+html[data-design-variant="C"] .nav-item.selected,
+html[data-design-variant="C"] .path-dot.done {
+  background: #20b8a6;
+  color: #061e25;
+}
+html[data-design-variant="C"] .brand-dot,
+html[data-design-variant="C"] .wave {
+  color: #76f2da;
+}
+html[data-design-variant="C"] .topbar {
+  background: #101a29;
+  border-color: #26384b;
+}
+html[data-design-variant="C"] .topbar strong,
+html[data-design-variant="C"] .page-heading h1,
+html[data-design-variant="C"] .section-title h2,
+html[data-design-variant="C"] .catalog-heading h2,
+html[data-design-variant="C"] .lesson-card strong {
+  color: #eef7ff;
+}
+html[data-design-variant="C"] .course-catalog {
+  padding: 24px;
+  border: 1px solid #26384b;
+  border-radius: 12px;
+  background: #101a29;
+}
+html[data-design-variant="C"] .track-map {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+html[data-design-variant="C"] .track-card,
+html[data-design-variant="C"] .course-option,
+html[data-design-variant="C"] .lesson-card,
+html[data-design-variant="C"] .daily-card,
+html[data-design-variant="C"] .project-card {
+  border-color: #304459;
+  background: #172538;
+  color: #eef7ff;
+}
+html[data-design-variant="C"] .track-card:hover,
+html[data-design-variant="C"] .course-option.active,
+html[data-design-variant="C"] .lesson-card:hover {
+  border-color: #20b8a6;
+  background: #20374a;
+}
+html[data-design-variant="C"] .track-card strong {
+  font-size: 17px;
+}
+html[data-design-variant="C"] .fullstack-destination {
+  grid-column: 1 / -1;
+  min-height: 68px;
+  border-style: dashed;
+}
+html[data-design-variant="C"] .course-switcher,
+html[data-design-variant="C"] .lesson-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+html[data-design-variant="C"] .course-option {
+  min-height: 100px;
+}
+html[data-design-variant="C"] .hero {
+  border: 1px solid #2c8b8d;
+  background: linear-gradient(120deg, #102c3f, #1c3c49 62%, #163248);
+}
+html[data-design-variant="C"] .hero h2 {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+html[data-design-variant="C"] .stats,
+html[data-design-variant="C"] .adaptive-coach,
+html[data-design-variant="C"] .right-rail > * {
+  border-color: #304459;
+  background: #132134;
+  color: #eaf2fb;
+}
+html[data-design-variant="C"] .lesson-card {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+}
+html[data-design-variant="C"] .lesson-number {
+  height: 38px;
+  width: 38px;
+  border-radius: 5px;
+  background: #254658;
+  color: #b0fff1;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 15px;
+}
+
+/* D: bright academy with an icon rail and a map that emphasizes branching. */
+html[data-design-variant="D"] body {
+  --bg: #f4f0ff;
+  --ink: #2d2355;
+  --line: #ded4fc;
+  background: var(--bg);
+  color: var(--ink);
+}
+html[data-design-variant="D"] .sidebar {
+  width: 78px;
+  padding: 22px 12px;
+  align-items: center;
+  background: #352169;
+  color: white;
+  border: 0;
+}
+html[data-design-variant="D"] .main-wrap {
+  margin-left: 78px;
+}
+html[data-design-variant="D"] .brand {
+  font-size: 0;
+}
+html[data-design-variant="D"] .brand-icon {
+  margin: 0;
+  background: #fca66c;
+  color: #352169;
+}
+html[data-design-variant="D"] .brand-dot,
+html[data-design-variant="D"] .sidebar .workspace-label,
+html[data-design-variant="D"] .sidebar .sidebar-divider,
+html[data-design-variant="D"] .sidebar .path-list,
+html[data-design-variant="D"] .sidebar .sidebar-bottom,
+html[data-design-variant="D"] .tiny-count {
+  display: none;
+}
+html[data-design-variant="D"] .sidebar nav {
+  margin-top: 48px;
+}
+html[data-design-variant="D"] .nav-item {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0;
+  color: #cfc2f5;
+}
+html[data-design-variant="D"] .nav-item.selected {
+  background: #fca66c;
+  color: #352169;
+}
+html[data-design-variant="D"] .topbar {
+  background: #fff;
+}
+html[data-design-variant="D"] .course-catalog {
+  padding: 25px;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 14px 35px #65449a12;
+}
+html[data-design-variant="D"] .track-map {
+  grid-template-columns: 1.15fr 1fr 1fr;
+  grid-template-rows: repeat(2, minmax(125px, auto));
+}
+html[data-design-variant="D"] .track-card {
+  min-height: 125px;
+  border: 0;
+  border-radius: 20px;
+  background: #f1e8ff;
+}
+html[data-design-variant="D"] .track-card:nth-child(1) {
+  grid-area: 1 / 1 / 3 / 2;
+  background: #ffe9cf;
+}
+html[data-design-variant="D"] .track-card:nth-child(2) {
+  grid-area: 1 / 2 / 2 / 3;
+  background: #d8f4ed;
+}
+html[data-design-variant="D"] .track-card:nth-child(3) {
+  grid-area: 1 / 3 / 2 / 4;
+  background: #dceaff;
+}
+html[data-design-variant="D"] .track-card:nth-child(4) {
+  grid-area: 2 / 2 / 3 / 3;
+  background: #f6dcec;
+}
+html[data-design-variant="D"] .track-card:nth-child(5) {
+  grid-area: 2 / 3 / 3 / 4;
+  background: #e8e2ff;
+  text-align: left;
+}
+html[data-design-variant="D"] .track-card strong {
+  font-size: 18px;
+}
+html[data-design-variant="D"] .course-option,
+html[data-design-variant="D"] .lesson-card {
+  border: 0;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px #65449a0e;
+}
+html[data-design-variant="D"] .course-option.active {
+  background: #3b2777;
+  color: white;
+}
+html[data-design-variant="D"] .hero {
+  border-radius: 26px;
+  background: linear-gradient(115deg, #6540c8, #da5f95 70%, #ffab6e);
+}
+html[data-design-variant="D"] .hero-button {
+  background: #fff;
+  color: #3b2777;
+}
+html[data-design-variant="D"] .lesson-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 950px) {
+  html[data-design-variant="B"] .course-catalog {
+    grid-template-columns: 1fr;
+  }
+  html[data-design-variant="B"] .course-switcher {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  html[data-design-variant="C"] .sidebar {
+    width: 210px;
+  }
+  html[data-design-variant="C"] .main-wrap {
+    margin-left: 210px;
+  }
+}
+
+@media (max-width: 700px) {
+  .design-prototype-switcher {
+    bottom: 10px;
+    width: calc(100vw - 20px);
+    justify-content: space-between;
+  }
+  .design-prototype-caption,
+  .design-prototype-options span {
+    display: none;
+  }
+  .design-prototype-options button {
+    min-width: 35px;
+    justify-content: center;
+  }
+  html[data-design-variant="B"] .sidebar,
+  html[data-design-variant="C"] .sidebar,
+  html[data-design-variant="D"] .sidebar {
+    position: fixed;
+    width: 244px;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: stretch;
+    visibility: hidden;
+    transform: translateX(-100%);
+  }
+  html[data-design-variant="B"] .sidebar.mobile-open,
+  html[data-design-variant="C"] .sidebar.mobile-open,
+  html[data-design-variant="D"] .sidebar.mobile-open {
+    visibility: visible;
+    transform: translateX(0);
+  }
+  html[data-design-variant="B"] .sidebar nav,
+  html[data-design-variant="D"] .sidebar nav {
+    display: block;
+    margin: 25px 0 0;
+  }
+  html[data-design-variant="B"] .nav-item,
+  html[data-design-variant="D"] .nav-item {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    font-size: 12px;
+    padding: 13px 12px;
+  }
+  html[data-design-variant="B"] .sidebar .workspace-label,
+  html[data-design-variant="D"] .sidebar .workspace-label,
+  html[data-design-variant="B"] .sidebar .path-list,
+  html[data-design-variant="D"] .sidebar .path-list {
+    display: block;
+  }
+  html[data-design-variant="C"] .main-wrap,
+  html[data-design-variant="D"] .main-wrap {
+    margin-left: 0;
+  }
+  html[data-design-variant="B"] .menu-button,
+  html[data-design-variant="C"] .menu-button,
+  html[data-design-variant="D"] .menu-button {
+    display: flex;
+  }
+  html[data-design-variant="B"] .track-map,
+  html[data-design-variant="C"] .track-map,
+  html[data-design-variant="D"] .track-map {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  html[data-design-variant="D"] .track-map {
+    grid-template-rows: auto;
+  }
+  html[data-design-variant="D"] .track-card:nth-child(n) {
+    grid-area: auto;
+  }
+  html[data-design-variant="D"] .track-card:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+  html[data-design-variant="B"] .lesson-cards,
+  html[data-design-variant="C"] .lesson-cards,
+  html[data-design-variant="D"] .lesson-cards {
+    grid-template-columns: 1fr;
+  }
+  html[data-design-variant="B"] .hero-content {
+    padding: 25px;
+  }
+}

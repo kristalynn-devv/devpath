@@ -22,7 +22,9 @@ import {
 } from "lucide-react";
 import { courses } from "./courses";
 import { AdaptiveCoach, useAssessment } from "./adaptive-coach";
+import { DesignPrototypeSwitcher } from "./design-prototype";
 import type { Course } from "./advanced-courses";
+import "./design-prototype.css";
 export default function Home() {
   const [courseId, setCourseId] = useState(1);
   useEffect(() => {
@@ -42,7 +44,12 @@ export default function Home() {
     return () => window.removeEventListener("hashchange", sync);
   }, []);
   const course = courses.find((c) => c.id === courseId)!;
-  return <CourseView key={course.id} course={course} />;
+  return (
+    <>
+      <CourseView key={course.id} course={course} />
+      {process.env.NODE_ENV !== "production" && <DesignPrototypeSwitcher />}
+    </>
+  );
 }
 function CourseView({ course }: { course: Course }) {
   const lessons = course.lessons;
@@ -464,8 +471,8 @@ function CourseView({ course }: { course: Course }) {
                           ? "นำตัวอย่างไปรันด้วย Node.js 24 และ TypeScript"
                           : lesson.language === "javascript"
                             ? "นำตัวอย่างไปรันด้วย Node.js 24"
-                            : "นำโค้ดไปรันใน Python 3 หรือ notebook ของคุณ"}
-                      {" "}เว็บนี้แสดงตัวอย่างและผลลัพธ์ประกอบ
+                            : "นำโค้ดไปรันใน Python 3 หรือ notebook ของคุณ"}{" "}
+                      เว็บนี้แสดงตัวอย่างและผลลัพธ์ประกอบ
                     </p>
                   </section>
                   <section className="exercise">
