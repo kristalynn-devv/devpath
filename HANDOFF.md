@@ -48,15 +48,16 @@ updated: 2026-09-24
 - [x] เติมหัวข้อ Node.js/Next.js ตาม ticket, เพิ่มจุดหมาย Full-stack Web และแก้ข้อความ Python ที่หลงในสายใหม่
 - [x] อัปเดต `PRD.md` สำหรับรุ่น 1 และเก็บประวัติรุ่น Python
 - [x] ตรวจ `npm run typecheck`, `npm run build` และหน้า Node.js/Next.js ในเบราว์เซอร์
-- [ ] commit และ push `main`; ตรวจ Cloudflare deployment
+- [x] commit และ push `main`; Cloudflare deployment ของ `383418e` สำเร็จ และ custom domain แสดง DevPath
 
 ### State
 
 branch: `main`; remote README commit ถูก merge ก่อนเริ่มแก้ source
 checkout: `/Users/kristalyn/Documents/GitHub/devpath`
-uncommitted: DevPath implementation, PRD, README, CLAUDE และ handoff
-GitHub repo: `kristalynn-devv/devpath`; local `origin` updated; source changes are pending push
+source commit: `383418e` บน `origin/main`; handoff status update จะเป็น commit ถัดไป
+GitHub repo: `kristalynn-devv/devpath`; local `origin` updated; source changes pushed
 Cloudflare Pages project: `devpath`; existing custom domain and `python-ai-course.pages.dev` hostname retained
+Cloudflare deployment ของ `383418e`: success; `https://python-ai-course.krista-lyn.com/` แสดง DevPath
 
 ### Decisions
 
@@ -67,8 +68,8 @@ Cloudflare Pages project: `devpath`; existing custom domain and `python-ai-cours
 
 ### Next action
 
-ตรวจ `git fetch origin` และ fast-forward status, commit งานที่ตรวจแล้ว, push `main`, จากนั้นตรวจ Cloudflare deployment
+ตรวจว่า handoff status commit ถูก push และ working tree สะอาด
 
 ### Blockers
 
-- Cloudflare project ยังแสดง source URL เดิมหลัง GitHub rename; ตรวจผล deployment หลัง push ก่อนเปลี่ยนการเชื่อมต่อ
+- Cloudflare project ยังแสดง source URL เดิมหลัง GitHub rename แต่ clone/build/deploy ของ `383418e` สำเร็จผ่าน GitHub redirect
