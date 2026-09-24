@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-// Prototype: fifteen DevPath styles on the existing route, switchable with ?variant=.
+// Prototype: sixteen DevPath styles on the existing route, switchable with ?variant=.
 const variants = [
   { key: "A", name: "Original Studio" },
   { key: "B", name: "Editorial" },
@@ -20,6 +20,7 @@ const variants = [
   { key: "M", name: "Carbon inspired" },
   { key: "N", name: "Polaris inspired" },
   { key: "O", name: "daisyUI inspired" },
+  { key: "P", name: "Learning Timeline" },
 ] as const;
 
 type Variant = (typeof variants)[number]["key"];
