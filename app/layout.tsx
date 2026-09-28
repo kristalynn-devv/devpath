@@ -9,7 +9,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="th" data-design-variant="L">
+    <html lang="th">
       <body>{children}</body>
     </html>
   );

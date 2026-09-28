@@ -1,10 +1,10 @@
 import { test, expect } from "@playwright/test";
 
-test("selected L style is the production default", async ({ page }) => {
+test("production uses the single selected theme", async ({ page }) => {
   await page.goto("/?variant=J#course-4");
-  await expect(page.locator("html")).toHaveAttribute(
+  await expect(page.locator("html")).not.toHaveAttribute(
     "data-design-variant",
-    "L",
+    /.+/,
   );
   await expect(page.locator(".design-prototype-switcher")).toHaveCount(0);
 });

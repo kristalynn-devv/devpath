@@ -1975,3 +1975,145 @@ pre {
     font-size: 11px;
   }
 }
+
+/* Fluent UI-inspired production theme. */
+body {
+  --bg: #f3f6fa;
+  --ink: #25354a;
+  --line: #dbe3ed;
+  background: var(--bg);
+  color: var(--ink);
+}
+.sidebar {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  min-height: 66px;
+  padding: 12px 4vw;
+  flex-direction: row;
+  align-items: center;
+  border-right: 0;
+  border-bottom: 1px solid #dbe3ed;
+  background: #fff;
+}
+.sidebar .workspace-label,
+.sidebar .sidebar-divider,
+.sidebar .path-list,
+.sidebar .sidebar-bottom {
+  display: none;
+}
+.sidebar nav {
+  display: flex;
+  gap: 5px;
+  margin-left: auto;
+}
+.nav-item {
+  width: auto;
+  margin: 0;
+}
+.nav-item.selected {
+  border-bottom: 2px solid #0067b8;
+  border-radius: 0;
+  background: #e5f0ff;
+  color: #004a9f;
+}
+.brand-icon,
+.path-dot.done {
+  border-radius: 2px;
+  background: #0067b8;
+}
+.main-wrap {
+  margin-left: 0;
+}
+.topbar {
+  height: 50px;
+  padding: 0 4vw;
+  background: #fff;
+}
+main {
+  max-width: 1420px;
+  padding: 30px 4vw 110px;
+}
+.track-map {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.track-card,
+.course-option,
+.lesson-card,
+.stats {
+  border: 1px solid #dbe3ed;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 2px 10px #173c6b0a;
+}
+.course-option.active {
+  border-left: 4px solid #0067b8;
+  background: #e5f0ff;
+}
+.hero {
+  min-height: 270px;
+  border-radius: 4px;
+  background: linear-gradient(105deg, #103e72, #0067b8);
+}
+.hero-button,
+.tabs button.active {
+  background: #fff;
+  color: #004a9f;
+}
+.lesson-heading {
+  padding: 30px;
+  border-left: 4px solid #0067b8;
+  background: #fff;
+  margin-bottom: 20px;
+}
+.lesson-heading > p {
+  margin-bottom: 0;
+}
+.lesson-content .code-window {
+  background: #142d49;
+}
+
+@media (max-width: 950px) {
+  .track-map {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .sidebar {
+    position: fixed;
+    width: 244px;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: stretch;
+    visibility: hidden;
+    transform: translateX(-100%);
+  }
+  .sidebar.mobile-open {
+    visibility: visible;
+    transform: translateX(0);
+  }
+  .sidebar nav {
+    display: block;
+    margin: 25px 0 0;
+  }
+  .nav-item {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    font-size: 12px;
+    padding: 13px 12px;
+  }
+  .menu-button {
+    display: flex;
+  }
+  .track-map,
+  .course-switcher {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .fullstack-destination {
+    grid-column: 1 / -1;
+  }
+}

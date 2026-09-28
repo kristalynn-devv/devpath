@@ -31,11 +31,11 @@ workspace เปิดที่ parent ที่ไม่มีประวั�
 
 ## Active work — DevPath release
 
-updated: 2026-09-24
+updated: 2026-09-28
 
 ### Goal
 
-เปลี่ยน PyPath เป็น DevPath และส่งมอบ 64 บทในสาย Python & AI, JavaScript/TypeScript, Node.js และ Next.js โดยรักษาข้อมูล Python เดิมและหน้าแผนที่ B
+เปลี่ยน PyPath เป็น DevPath และส่งมอบ 64 บทในสาย Python & AI, JavaScript/TypeScript, Node.js และ Next.js โดยรักษาข้อมูล Python เดิมและใช้ Theme L เป็นหน้าตาหลัก
 
 ### Steps
 
@@ -49,26 +49,28 @@ updated: 2026-09-24
 - [x] อัปเดต `PRD.md` สำหรับรุ่น 1 และเก็บประวัติรุ่น Python
 - [x] ตรวจ `npm run typecheck`, `npm run build` และหน้า Node.js/Next.js ในเบราว์เซอร์
 - [x] commit และ push `main`; Cloudflare deployment ของ `383418e` สำเร็จ และ custom domain แสดง DevPath
+- [x] เลือก Theme L โทนฟ้าแบบ Fluent UI-inspired เป็นหน้าตาหลัก ตรวจ build/typecheck/Playwright 16/16 และ deploy production สำเร็จ
+- [x] เก็บ production ให้เหลือ Theme L ชุดเดียว และลบตัวสลับกับ CSS ของ prototype อื่น
 
 ### State
 
 branch: `main`; remote README commit ถูก merge ก่อนเริ่มแก้ source
 checkout: `/Users/kristalyn/Documents/GitHub/devpath`
-source commit: `383418e` บน `origin/main`; handoff status update จะเป็น commit ถัดไป
+source: `main` ใช้ Theme L เพียงชุดเดียว; แบบทดลองยังย้อนดูได้จากประวัติ Git
 GitHub repo: `kristalynn-devv/devpath`; local `origin` updated; source changes pushed
 Cloudflare Pages project: `devpath`; existing custom domain and `python-ai-course.pages.dev` hostname retained
-Cloudflare deployment ของ `383418e`: success; `https://python-ai-course.krista-lyn.com/` แสดง DevPath
+Cloudflare deployment ของ `95eebf1`: success; `https://python-ai-course.krista-lyn.com/` แสดง DevPath ด้วย Theme L
 
 ### Decisions
 
 - release แรกมี Python & AI 40 บทเดิม + Foundation 8 + Node.js 8 + Next.js 8
 - ชื่อผลิตภัณฑ์/โฟลเดอร์/package/GitHub/Cloudflare: DevPath / `devpath`
 - คง static export และ output `out`; ข้อมูลและ URL Python เดิมต้องใช้ได้
-- พื้นฐานร่วม JS/TS ใช้ก่อน Node/Next ได้ แต่ไม่ล็อกสาย; Variant B เป็นแผนที่หลัก
+- พื้นฐานร่วม JS/TS ใช้ก่อน Node/Next ได้ แต่ไม่ล็อกสาย; Theme L เป็นหน้าตาหลักเพียงชุดเดียว ส่วนแบบทดลองเก็บในประวัติ Git
 
 ### Next action
 
-ตรวจว่า handoff status commit ถูก push และ working tree สะอาด
+ไม่มีงานค้างใน release นี้; เริ่มงานถัดไปจาก `main` หลังตรวจว่า working tree สะอาด
 
 ### Blockers
 

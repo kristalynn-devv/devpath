@@ -22,9 +22,7 @@ import {
 } from "lucide-react";
 import { courses } from "./courses";
 import { AdaptiveCoach, useAssessment } from "./adaptive-coach";
-import { DesignPrototypeSwitcher } from "./design-prototype";
 import type { Course } from "./advanced-courses";
-import "./design-prototype.css";
 export default function Home() {
   const [courseId, setCourseId] = useState(1);
   useEffect(() => {
@@ -44,12 +42,7 @@ export default function Home() {
     return () => window.removeEventListener("hashchange", sync);
   }, []);
   const course = courses.find((c) => c.id === courseId)!;
-  return (
-    <>
-      <CourseView key={course.id} course={course} />
-      {process.env.NODE_ENV !== "production" && <DesignPrototypeSwitcher />}
-    </>
-  );
+  return <CourseView key={course.id} course={course} />;
 }
 function CourseView({ course }: { course: Course }) {
   const lessons = course.lessons;
