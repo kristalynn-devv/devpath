@@ -198,7 +198,7 @@ test("all new courses open every lesson and preserve separate progress", async (
       localStorage.setItem("pypath-progress-v1", "[0]");
   });
   await page.goto("/");
-  await expect(page.locator(".course-option")).toHaveCount(5);
+  await expect(page.locator(".course-option")).toHaveCount(8);
   for (let course = 2; course <= 5; course++) {
     await page.locator(`.course-option[href="#course-${course}"]`).click();
     await expect(page.locator(".course-option.active")).toContainText(
