@@ -23,6 +23,29 @@ import {
 import { courses } from "./courses";
 import { AdaptiveCoach, useAssessment } from "./adaptive-coach";
 import type { Course } from "./advanced-courses";
+
+const totalLessons = courses.reduce(
+  (total, course) => total + course.lessons.length,
+  0,
+);
+
+function courseHash(course: Course) {
+  if (course.id === 1) return "#curriculum";
+  if (course.id <= 5) return `#course-${course.id}`;
+  return `#${course.track}/course-1`;
+}
+
+function lessonHash(course: Course, lessonIndex: number) {
+  const prefix = course.id === 1 ? "#" : `${courseHash(course)}/`;
+  return `${prefix}lesson-${lessonIndex + 1}`;
+}
+
+function progressStorageKey(course: Course) {
+  if (course.id === 1) return "pypath-progress-v1";
+  if (course.id <= 5) return `pypath-course-${course.id}-v1`;
+  return `devpath-${course.track}-course-${course.id}-v1`;
+}
+
 export default function Home() {
   const [courseId, setCourseId] = useState(1);
   useEffect(() => {
@@ -31,7 +54,7 @@ export default function Home() {
       const legacy = hash.match(/^#course-(\d+)(?:$|\/)/);
       const modern = hash.match(/^#(javascript|node|nextjs)\/course-1(?:$|\/)/);
       const id = modern
-        ? ({ javascript: 6, node: 7, nextjs: 8 }[modern[1]] ?? 1)
+        ? (courses.find((course) => course.track === modern[1])?.id ?? 1)
         : legacy
           ? Number(legacy[1])
           : 1;
@@ -47,12 +70,7 @@ export default function Home() {
 function CourseView({ course }: { course: Course }) {
   const lessons = course.lessons;
   const assessment = useAssessment(course);
-  const STORAGE =
-    course.id <= 5
-      ? course.id === 1
-        ? "pypath-progress-v1"
-        : `pypath-course-${course.id}-v1`
-      : `devpath-${course.track}-course-${course.id}-v1`;
+  const storageKey = progressStorageKey(course);
   const [completed, setCompleted] = useState<number[]>([]);
   const [ready, setReady] = useState(false);
   const [storageError, setStorageError] = useState(false);
@@ -66,7 +84,7 @@ function CourseView({ course }: { course: Course }) {
   const [mobile, setMobile] = useState(false);
   useEffect(() => {
     try {
-      const value = JSON.parse(localStorage.getItem(STORAGE) || "[]");
+      const value = JSON.parse(localStorage.getItem(storageKey) || "[]");
       if (Array.isArray(value))
         setCompleted([
           ...new Set(
@@ -83,16 +101,16 @@ function CourseView({ course }: { course: Course }) {
       setStorageError(true);
     }
     setReady(true);
-  }, []);
+  }, [storageKey, lessons.length]);
   useEffect(() => {
     if (ready) {
       try {
-        localStorage.setItem(STORAGE, JSON.stringify(completed));
+        localStorage.setItem(storageKey, JSON.stringify(completed));
       } catch {
         setStorageError(true);
       }
     }
-  }, [completed, ready]);
+  }, [completed, ready, storageKey]);
   useEffect(() => {
     const closeMenu = (event: KeyboardEvent) => {
       if (event.key === "Escape") setMobile(false);
@@ -113,25 +131,14 @@ function CourseView({ course }: { course: Course }) {
     onHash();
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
-  }, []);
+  }, [lessons.length]);
   const open = (id: number) => {
-    const prefix =
-      course.id <= 5
-        ? course.id === 1
-          ? ""
-          : `course-${course.id}/`
-        : `${course.track}/course-1/`;
-    window.location.hash = `${prefix}lesson-${id + 1}`;
+    window.location.hash = lessonHash(course, id);
     setMobile(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const home = () => {
-    window.location.hash =
-      course.id <= 5
-        ? course.id === 1
-          ? "curriculum"
-          : `course-${course.id}`
-        : `${course.track}/course-1`;
+    window.location.hash = courseHash(course);
     setMobile(false);
   };
   const next = lessons.findIndex((_, i) => !completed.includes(i));
@@ -162,17 +169,7 @@ function CourseView({ course }: { course: Course }) {
         ข้ามไปเนื้อหา
       </a>
       <aside className={`sidebar ${mobile ? "mobile-open" : ""}`}>
-        <a
-          href={
-            course.id <= 5
-              ? course.id === 1
-                ? "#curriculum"
-                : `#course-${course.id}`
-              : `#${course.track}/course-1`
-          }
-          className="brand"
-          onClick={home}
-        >
+        <a href={courseHash(course)} className="brand" onClick={home}>
           <span className="brand-icon">
             <Code2 size={23} />
           </span>
@@ -185,7 +182,7 @@ function CourseView({ course }: { course: Course }) {
             onClick={home}
           >
             <BookOpen size={19} />
-            หลักสูตรของฉัน <span className="tiny-count">8</span>
+            หลักสูตรของฉัน <span className="tiny-count">{courses.length}</span>
           </button>
           <button
             className={active !== null ? "nav-item selected" : "nav-item"}
@@ -300,7 +297,9 @@ function CourseView({ course }: { course: Course }) {
             <div className="catalog-heading">
               <div>
                 <span className="eyebrow">YOUR DEVELOPER LEARNING MAP</span>
-                <h2>3 เส้นทาง · 8 คอร์ส · 64 บทเรียน</h2>
+                <h2>
+                  3 เส้นทาง · {courses.length} คอร์ส · {totalLessons} บทเรียน
+                </h2>
               </div>
               <span>เลือกสายได้ตามเป้าหมาย · ไม่ล็อกเส้นทาง</span>
             </div>
@@ -340,13 +339,7 @@ function CourseView({ course }: { course: Course }) {
                       ? "course-option active"
                       : "course-option"
                   }
-                  href={
-                    c.id <= 5
-                      ? c.id === 1
-                        ? "#curriculum"
-                        : `#course-${c.id}`
-                      : `#${c.track}/course-1`
-                  }
+                  href={courseHash(c)}
                   aria-current={c.id === course.id ? "page" : undefined}
                 >
                   <span>COURSE 0{c.id}</span>
@@ -564,7 +557,9 @@ function CourseView({ course }: { course: Course }) {
                       }}
                     >
                       <Check size={17} />
-                      {active === 7 ? "จบหลักสูตร" : "เรียนจบและไปบทถัดไป"}
+                      {active === lessons.length - 1
+                        ? "จบหลักสูตร"
+                        : "เรียนจบและไปบทถัดไป"}
                     </button>
                   </div>
                   <p className="code-note">
@@ -618,7 +613,8 @@ function CourseView({ course }: { course: Course }) {
                 <div className="hero-content">
                   <div className="hero-label">
                     <span /> LEARNING PATH{" "}
-                    <span className="hero-label-divider">/</span> 8 WEEKS
+                    <span className="hero-label-divider">/</span>{" "}
+                    {lessons.length} WEEKS
                   </div>
                   <h2>
                     {course.id === 1
@@ -649,7 +645,8 @@ function CourseView({ course }: { course: Course }) {
                   </p>
                   <div className="hero-meta">
                     <span>
-                      <BookOpen size={15} />8 บทเรียน
+                      <BookOpen size={15} />
+                      {lessons.length} บทเรียน
                     </span>
                     <span>
                       <Clock3 size={15} />
@@ -660,7 +657,7 @@ function CourseView({ course }: { course: Course }) {
                     className="hero-button"
                     onClick={() => open(next === -1 ? 0 : next)}
                   >
-                    {completed.length === 8
+                    {completed.length === lessons.length
                       ? "ทบทวนบทเรียน"
                       : completed.length
                         ? "เรียนต่อจากครั้งก่อน"
@@ -752,7 +749,7 @@ function CourseView({ course }: { course: Course }) {
                   </span>
                   <div>
                     <strong>
-                      8 <small>บทเรียน</small>
+                      {lessons.length} <small>บทเรียน</small>
                     </strong>
                     <p>จากพื้นฐานสู่การใช้งานจริง</p>
                   </div>
@@ -763,7 +760,7 @@ function CourseView({ course }: { course: Course }) {
                   </span>
                   <div>
                     <strong>
-                      8 <small>แบบฝึกหัด</small>
+                      {lessons.length} <small>แบบฝึกหัด</small>
                     </strong>
                     <p>เรียนรู้ผ่านการลงมือเขียน</p>
                   </div>
@@ -791,7 +788,9 @@ function CourseView({ course }: { course: Course }) {
                       <h2>ค่อย ๆ เรียน ค่อย ๆ สร้าง</h2>
                       <p>ทุกบทคืออีกก้าวสู่เป้าหมายของคุณ</p>
                     </div>
-                    <span className="muted-small">8 บทเรียน</span>
+                    <span className="muted-small">
+                      {lessons.length} บทเรียน
+                    </span>
                   </div>
                   <div className="course-tools">
                     <div className="tabs">
@@ -912,7 +911,10 @@ function CourseView({ course }: { course: Course }) {
                         ? "คุณทำสำเร็จแล้ว!"
                         : "ทุกก้าวมีความหมาย"}
                     </h3>
-                    <p>{completed.length} จาก 8 บทเรียนเสร็จสมบูรณ์</p>
+                    <p>
+                      {completed.length} จาก {lessons.length}{" "}
+                      บทเรียนเสร็จสมบูรณ์
+                    </p>
                     <div className="progress-track">
                       <span style={{ width: `${percent}%` }} />
                     </div>

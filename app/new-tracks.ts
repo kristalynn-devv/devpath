@@ -13,11 +13,7 @@ type LessonSeed = [
   correct: number,
 ];
 
-function lessons(
-  language: Lesson["language"],
-  seeds: LessonSeed[],
-  exercises: string[],
-): Lesson[] {
+function lessons(language: Lesson["language"], seeds: LessonSeed[]): Lesson[] {
   return seeds.map(
     (
       [
@@ -333,37 +329,6 @@ const next: LessonSeed[] = [
   ],
 ];
 
-const javascriptExercises = [
-  "เพิ่มตัวแปร name อีกหนึ่งค่า แล้วพิมพ์ข้อความทักทายโดยใช้ template literal",
-  "รับคะแนน 0–100 แล้วแสดงระดับผ่าน/ไม่ผ่าน พร้อมทดสอบค่าที่ขอบเขต 59 และ 60",
-  "เพิ่มงานอีกสองรายการใน array แล้วแสดงเฉพาะ title ของงานที่ยังไม่เสร็จ",
-  "เขียนฟังก์ชันส่วนลดที่รับราคาและเปอร์เซ็นต์ ตรวจราคาเป็นลบและทดสอบ 0%",
-  "ใช้ filter เลือกคะแนนตั้งแต่ 60 ขึ้นไป แล้วใช้ reduce หาค่าเฉลี่ยของรายการที่ผ่าน",
-  "เพิ่ม priority: number ลงใน Task และให้ TypeScript ช่วยตรวจ object ที่ขาด property",
-  "เปลี่ยนตัวอย่างให้รอ Promise ที่ resolve หลัง 300ms และจัดการกรณี reject ด้วย try/catch",
-  "ทำ Task Board ที่เพิ่มงาน ทำเครื่องหมายเสร็จ และแสดงจำนวนงานที่ยังค้าง",
-];
-const nodeExercises = [
-  "พิมพ์ process.version และ argv จาก script แล้วรันด้วย argument ชื่อที่คุณเลือก",
-  "คัดลอกไฟล์ใหญ่ด้วย stream และเพิ่ม error handler; สังเกตว่า event loop ยังตอบงานอื่นได้",
-  "สร้าง Fastify GET /health พร้อม status 200 และเพิ่ม GET /tasks/:id",
-  "เพิ่ม request/response schema, ขอบเขต title และ error mapping สำหรับ 400/404",
-  "สร้าง SQLite table แล้วเพิ่ม/อ่าน/แก้/ลบงานด้วย prepared statements",
-  "เพิ่ม login/session และ role check; ทดสอบกรณี 401, 403 และผู้ใช้ที่ได้รับอนุญาต",
-  "เขียน node:test ให้ service, เพิ่ม structured log และปิด server/resource เมื่อรับ SIGTERM",
-  "ทำ CRUD ให้ครบพร้อม validation, SQLite, auth, tests, logging และ graceful shutdown",
-];
-const nextExercises = [
-  "เพิ่มฟอร์มที่จัดการ title ด้วย state และส่ง onAdd ผ่าน props; ทดสอบ submit ด้วย keyboard และ title ว่าง",
-  "เพิ่ม /tasks/[id] พร้อม layout, Link navigation และ not-found state เมื่อไม่พบงาน",
-  "อ่าน task บน Server Component แล้วแยกปุ่ม checkbox เป็น Client Component พร้อม props แบบ serializable",
-  "เปิด cacheComponents, ใช้ Suspense/loading fallback และตั้ง cacheLife; อธิบายเมื่อใดต้อง revalidate ข้อมูล",
-  "สร้าง Server Action เพิ่มงาน ตรวจ title และ authorization ฝั่ง server แล้ว revalidatePath หลังบันทึก",
-  "สร้าง GET /api/tasks ที่ตรวจ session, authorization และส่ง 401/403/200 ตามกรณี",
-  "เพิ่ม metadata, semantic headings, keyboard flow และ Playwright test สำหรับการสร้างงาน",
-  "สร้าง Task Dashboard ต่อ Node API หรือ mock API พร้อม loading/error, summary และ accessible task form",
-];
-
 export const newCourses: Course[] = [
   {
     id: 6,
@@ -384,12 +349,10 @@ export const newCourses: Course[] = [
         url: "https://www.typescriptlang.org/docs/handbook/intro.html",
       },
     ],
-    lessons: lessons("typescript", javascript, javascriptExercises).map(
-      (lesson, index) => ({
-        ...lesson,
-        language: index < 5 || index === 6 ? "javascript" : "typescript",
-      }),
-    ),
+    lessons: lessons("typescript", javascript).map((lesson, index) => ({
+      ...lesson,
+      language: index < 5 || index === 6 ? "javascript" : "typescript",
+    })),
   },
   {
     id: 7,
@@ -423,7 +386,7 @@ export const newCourses: Course[] = [
         url: "https://www.sqlite.org/lang.html",
       },
     ],
-    lessons: lessons("typescript", node, nodeExercises),
+    lessons: lessons("typescript", node),
   },
   {
     id: 8,
@@ -455,6 +418,6 @@ export const newCourses: Course[] = [
         url: "https://nextjs.org/docs/app/guides/testing/playwright",
       },
     ],
-    lessons: lessons("tsx", next, nextExercises),
+    lessons: lessons("tsx", next),
   },
 ];
