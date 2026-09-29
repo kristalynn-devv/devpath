@@ -1979,8 +1979,10 @@ pre {
 /* Fluent UI-inspired production theme. */
 body {
   --bg: #f3f6fa;
-  --ink: #25354a;
-  --line: #dbe3ed;
+  --ink: #0b1f3a;
+  --muted: #64748b;
+  --green: #2563a8;
+  --line: #ccd8e6;
   background: var(--bg);
   color: var(--ink);
 }
@@ -2116,4 +2118,263 @@ main {
   .fullstack-destination {
     grid-column: 1 / -1;
   }
+}
+
+/* Blue, blue-gray, and navy production palette. */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline-color: #60a5fa;
+}
+.brand-dot,
+.wave {
+  color: #2563a8;
+}
+.catalog-heading > span,
+.track-card small,
+.course-option > span,
+.course-option small,
+.prerequisite {
+  color: #64748b;
+}
+.course-option:hover,
+.hero-button:hover {
+  background: #eef3f8;
+}
+.card-arrow {
+  border-color: #ccd8e6;
+  color: #2563a8;
+}
+.breadcrumb,
+.top-badge,
+.eyebrow,
+.page-heading p,
+.stats p,
+.section-title p,
+.muted-small,
+.tabs button,
+.search,
+.card-label,
+.card-description,
+.card-meta,
+.progress-circle small,
+.progress-card p,
+.saved-note,
+.learning-note,
+footer,
+.lesson-heading > p,
+.lesson-content p,
+.concepts,
+.lesson-content .code-note,
+.adaptive-header p,
+.assessment-rule,
+.recommendation p,
+.assessment-result p,
+.evidence-details p,
+.evidence-details li {
+  color: #64748b;
+}
+.breadcrumb strong,
+.learning-note strong {
+  color: #405674;
+}
+.top-badge span,
+.beginner-pill span,
+.progress-track span {
+  background: #2563a8;
+}
+.beginner-pill,
+.tiny-count,
+.mint-symbol,
+.evidence-count {
+  border-color: #ccd8e6;
+  background: #e8f0f8;
+  color: #174f8a;
+}
+.nav-item.selected,
+.course-option.active,
+.tabs button.active,
+.choice.chosen {
+  border-color: #2563a8;
+  background: #e1ecf7;
+  color: #174f8a;
+}
+.track-card:hover,
+.lesson-card:hover {
+  border-color: #7fa6cc;
+}
+.mint,
+.tone-0 {
+  background: #e8f0f8;
+  color: #2563a8;
+}
+.peach,
+.tone-1 {
+  background: #dde8f3;
+  color: #315f8c;
+}
+.lavender,
+.tone-2 {
+  background: #d3dfec;
+  color: #254f78;
+}
+.tone-3 {
+  background: #c8d7e6;
+  color: #173f67;
+}
+.complete-label,
+.text-button,
+.back-link,
+.project-card button {
+  color: #1d5f9f !important;
+}
+.progress-track {
+  background: #dce5ef;
+}
+.project-card,
+.lesson-content .exercise,
+.output,
+.choice > span,
+.source-links a {
+  border-color: #ccd8e6;
+  background: #e8eef5;
+}
+.project-icon {
+  border-color: #b8c9da;
+  background: #d9e5f1;
+  color: #2563a8;
+}
+.project-card p,
+.project-tags span,
+.further-learning p,
+.specializations li,
+.output > span {
+  color: #64748b;
+}
+.project-tags span,
+.project-card button {
+  border-color: #c3d1df;
+}
+.code-header {
+  color: #9fb3c8;
+}
+.code-header i,
+.code-header i:first-child,
+.code-header i:nth-child(2) {
+  background: #60a5fa;
+}
+.code-window pre {
+  color: #d9e7f5;
+}
+.output pre {
+  color: #334e68;
+}
+.choice input {
+  accent-color: #2563a8;
+}
+.choice.correct,
+.feedback.good,
+.level-track .passed {
+  border-color: #6f9bc5;
+  background: #dceaf7;
+}
+.feedback {
+  background: #e8eef5;
+}
+.primary-button,
+.secondary-button {
+  border-color: #2563a8;
+  background: #2563a8;
+}
+.secondary-button {
+  border-color: #b8c9da;
+  background: #fff;
+  color: #174f8a;
+}
+.adaptive-coach {
+  border-color: #bfd0e0;
+  background: linear-gradient(120deg, #e8f0f8, #fff);
+}
+.level-track > div,
+.assessment-workspace {
+  border-color: #ccd8e6;
+}
+.level-track span,
+.level-track small {
+  color: #526981;
+}
+.assessment-warning {
+  color: #315f8c;
+}
+.recommendation {
+  border-left-color: #2563a8;
+}
+.evidence-details {
+  border-top-color: #ccd8e6;
+}
+.mobile-overlay {
+  background: #0b1f3a80;
+}
+.orbit {
+  border-color: #2563a824;
+}
+.hero-art::after {
+  background-image: radial-gradient(#64748b30 1px, transparent 1px);
+}
+.art-code {
+  border-color: #315f8c;
+  background: #0b1f3a;
+  box-shadow: 12px 20px 35px #0b1f3a55;
+}
+.art-code-top,
+.art-output {
+  border-color: #9fb3c844;
+}
+.art-code-top > span {
+  background: #60a5fa;
+}
+.art-code-top > span:nth-child(2) {
+  background: #93b7d8;
+}
+.art-code-top > span:nth-child(3) {
+  background: #c8d7e6;
+}
+.art-code-top small,
+.art-code-body {
+  color: #9fb3c8;
+}
+.art-code-body em {
+  color: #64748b;
+}
+.art-code-body b {
+  color: #93c5fd;
+}
+.art-code-body mark,
+.art-output > span {
+  color: #bfdbfe;
+}
+.art-code-body strong,
+.art-output {
+  color: #60a5fa;
+}
+.cursor-block,
+.floating-label > span {
+  background: #60a5fa;
+}
+.floating-label {
+  background: #174f8a;
+  color: #dbeafe;
+}
+.art-star {
+  color: #93b7d8;
+}
+.python-tile {
+  background: #dbeafe;
+  color: #174f8a;
+  box-shadow: 0 7px 18px #0b1f3a44;
+}
+.ai-tile {
+  border-color: #b8c9da;
+  background: #e8f0f8;
+  color: #174f8a;
 }

@@ -895,7 +895,7 @@ function CourseView({ course }: { course: Course }) {
                     <div
                       className="progress-circle"
                       style={{
-                        background: `conic-gradient(#28715a ${percent}%, #edf0e9 0)`,
+                        background: `conic-gradient(#2563a8 ${percent}%, #dce5ef 0)`,
                       }}
                     >
                       <div>
