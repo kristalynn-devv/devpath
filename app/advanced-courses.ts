@@ -471,6 +471,10 @@ export const advancedCourses: Course[] = [
         title: "scikit-learn: Text feature extraction",
         url: "https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction",
       },
+      {
+        title: "Chroma: Python reference",
+        url: "https://docs.trychroma.com/reference/python",
+      },
     ],
     lessons: [
       {
@@ -676,6 +680,87 @@ export const advancedCourses: Course[] = [
         answer: 2,
         explanation:
           "Demo ที่คัดเฉพาะผลดีไม่แสดงคุณภาพจริง ต้องมีชุดประเมินและข้อจำกัดที่ตรวจสอบได้",
+      },
+      {
+        title: "Vector Database ด้วย ChromaDB",
+        subtitle: "เก็บ embedding ค้นคืน และอ้างอิงแหล่งข้อมูล",
+        tag: "VECTOR DATABASE",
+        minutes: 90,
+        intro:
+          "ติดตั้งด้วย python -m pip install chromadb แล้วสร้างฐานข้อมูลเวกเตอร์ในเครื่อง ตัวอย่างใช้ embedding สมมติเพื่อให้ผลค้นแน่นอน งานจริงต้องสร้าง embedding ของเอกสารและคำถามด้วยโมเดลเดียวกัน",
+        concepts: [
+          "PersistentClient เก็บ collection ลงดิสก์ เหมาะกับการทดลองในเครื่อง ส่วนระบบจริงควรแยก Chroma server และกำหนดการยืนยันตัวตน",
+          "upsert เพิ่มรายการใหม่หรืออัปเดตรายการเดิมด้วย ID เดิม ช่วยให้ ingest ซ้ำได้โดยไม่สร้างข้อมูลซ้ำ",
+          "เก็บ document, source ID และ metadata คู่กับ embedding เพื่อกรองสิทธิ์และย้อนกลับไปแสดง citation ได้",
+          "query_embeddings ต้องมาจาก embedding model และเวอร์ชันเดียวกับเอกสาร ห้ามเปรียบเทียบเวกเตอร์คนละพื้นที่กัน",
+        ],
+        code: "import chromadb\n\nclient = chromadb.PersistentClient(path='./chroma_data')\nnotes = client.get_or_create_collection(name='my_notes')\nnotes.upsert(\n    ids=['note-1', 'note-2'],\n    embeddings=[[1.0, 0.0], [0.0, 1.0]],\n    documents=['ประชุมทีมวันจันทร์ 10 โมง', 'เบิกค่าเดินทางด้วยแบบฟอร์ม TR-01'],\n    metadatas=[{'source': 'calendar'}, {'source': 'handbook'}],\n)\nresult = notes.query(query_embeddings=[[0.0, 1.0]], n_results=1)\nprint(result['ids'][0][0])",
+        output: "note-2",
+        exercise:
+          "สร้าง collection จากโน้ตของคุณอย่างน้อย 20 ชิ้น ใช้ embedding model เดียวกันทั้งตอน upsert และ query เพิ่ม metadata owner กับ source แล้วทดสอบ query 10 ข้อ โดยตรวจว่าผลลัพธ์อันดับแรกและ citation ถูกต้อง",
+        question: "ข้อมูลใดควรเก็บคู่กับ embedding เพื่ออ้างอิงผลค้นกลับได้?",
+        choices: [
+          "เฉพาะระยะห่าง",
+          "Document, source ID และ metadata",
+          "API key ของผู้ใช้",
+        ],
+        answer: 1,
+        explanation:
+          "ข้อความและข้อมูลแหล่งที่มาทำให้แสดงหลักฐาน ตรวจสิทธิ์ และวิเคราะห์ผลค้นที่ผิดได้ ส่วน API key ไม่ควรเก็บเป็น metadata ของเอกสาร",
+      },
+      {
+        title: "แชทบอทจากข้อมูลของเราและความรู้ทั่วไป",
+        subtitle: "เลือก private RAG หรือคำตอบทั่วไปอย่างโปร่งใส",
+        tag: "CHATBOT",
+        minutes: 105,
+        intro:
+          "สร้างแชทบอทสองเส้นทาง: คำถามเกี่ยวกับเอกสารของเราใช้ RAG พร้อม citation ส่วนคำถามทั่วไปใช้ความรู้ของโมเดลและติดป้ายว่าไม่ได้อ้างเอกสารส่วนตัว ห้ามส่งข้อมูลส่วนตัวไปเส้นทางทั่วไปโดยไม่จำเป็น",
+        concepts: [
+          "ค้น private index ก่อน แล้วตัดสินจากคะแนนและหลักฐาน ไม่เดาจากคำสำคัญเพียงอย่างเดียว",
+          "คำตอบจากข้อมูลของเราต้องอ้าง source ID และยอมตอบว่าไม่พบข้อมูลเมื่อ retrieval ไม่พอ",
+          "คำตอบทั่วไปต้องบอกผู้ใช้ว่าไม่ได้ grounded ด้วยเอกสาร และข้อมูลที่เปลี่ยนเร็วควรเรียกแหล่งข้อมูลปัจจุบันผ่าน tool",
+          "เก็บประวัติเท่าที่จำเป็น กรองข้อมูลลับจาก log และบังคับสิทธิ์ก่อน retrieval ทุกครั้ง",
+        ],
+        code: "def choose_mode(hits, best_distance, threshold=0.35):\n    if hits and best_distance is not None and best_distance <= threshold:\n        return 'private_rag'\n    return 'general_knowledge'\n\nprint(choose_mode(['doc-7'], 0.18))\nprint(choose_mode([], None))",
+        output: "private_rag\ngeneral_knowledge",
+        exercise:
+          "ต่อ ChromaDB จากบทก่อนเข้ากับ server adapter ของโมเดล สร้างคำถาม private 15 ข้อ general 15 ข้อ และคำถามกำกวม 10 ข้อ แสดง badge ของโหมดพร้อม citation เมื่อใช้ RAG และวัดการเลือกเส้นทางผิดแยกจากความถูกต้องของคำตอบ",
+        question: "คำตอบจากเส้นทาง general knowledge ควรแสดงอย่างไร?",
+        choices: [
+          "อ้างว่าอ่านจากเอกสารของเรา",
+          "ไม่ต้องบอกแหล่งที่มา",
+          "ระบุว่าไม่ได้อ้างเอกสารส่วนตัวและอาจต้องตรวจข้อมูลล่าสุด",
+        ],
+        answer: 2,
+        explanation:
+          "การบอกที่มาของโหมดช่วยให้ผู้ใช้แยกคำตอบที่ grounded ด้วยเอกสารออกจากความรู้ทั่วไปของโมเดล",
+      },
+      {
+        title: "ผู้ช่วยส่วนตัวที่มีความจำและเครื่องมือ",
+        subtitle: "Memory, calendar tools และการยืนยันก่อนลงมือ",
+        tag: "PERSONAL ASSISTANT",
+        minutes: 120,
+        intro:
+          "ต่อยอดแชทบอทเป็นผู้ช่วยส่วนตัวที่จำเฉพาะข้อมูลซึ่งผู้ใช้อนุญาต และเรียกเครื่องมือ เช่น ปฏิทินหรืองานค้างผ่าน allowlist แอปต้องตรวจสิทธิ์และขอคำยืนยันก่อนการกระทำที่เปลี่ยนข้อมูล",
+        concepts: [
+          "แยก conversation history ชั่วคราวออกจาก long-term memory ที่ผู้ใช้ดู แก้ และลบได้",
+          "โมเดลเสนอ tool call แต่แอปตรวจ schema, สิทธิ์ และ allowlist ก่อนเรียกจริง",
+          "การสร้าง แก้ หรือลบนัดหมายต้องมี confirmation และ idempotency key ป้องกันทำซ้ำ",
+          "เก็บ secret ฝั่งเซิร์ฟเวอร์ จำกัดข้อมูลใน log และทดสอบ prompt injection จากโน้ตหรือปฏิทิน",
+        ],
+        code: "ALLOWED_TOOLS = {'read_calendar', 'list_tasks'}\n\ndef authorize(tool, confirmed=False):\n    if tool not in ALLOWED_TOOLS:\n        return 'blocked'\n    return 'run' if confirmed else 'confirm'\n\nprint(authorize('read_calendar', confirmed=True))\nprint(authorize('delete_calendar', confirmed=True))",
+        output: "run\nblocked",
+        exercise:
+          "สร้างผู้ช่วยที่ค้นโน้ตส่วนตัว อ่านปฏิทินแบบ read-only และตอบคำถามทั่วไปได้ เพิ่มหน้าดู/ลบ memory, confirmation ก่อน write tool และ audit log ที่ไม่เก็บเนื้อหาลับ ทดสอบ tool ที่ไม่อนุญาต คำสั่งซ้ำ และ prompt injection อย่างละอย่างน้อย 5 กรณี",
+        question: "ใครควรเป็นผู้อนุญาต tool call ก่อนเปลี่ยนข้อมูลจริง?",
+        choices: [
+          "โมเดลเพียงอย่างเดียว",
+          "แอปที่ตรวจสิทธิ์และการยืนยันของผู้ใช้",
+          "ข้อความในเอกสารที่ค้นเจอ",
+        ],
+        answer: 1,
+        explanation:
+          "โมเดลไม่มีอำนาจบังคับใช้สิทธิ์ แอปต้องตรวจคำขอและให้ผู้ใช้ยืนยันการกระทำที่มีผลต่อข้อมูล",
       },
     ],
   },

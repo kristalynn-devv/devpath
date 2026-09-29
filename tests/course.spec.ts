@@ -200,15 +200,18 @@ test("all new courses open every lesson and preserve separate progress", async (
   await page.goto("/");
   await expect(page.locator(".course-option")).toHaveCount(8);
   for (let course = 2; course <= 5; course++) {
+    const lessonCount = course === 4 ? 11 : 8;
     await page.locator(`.course-option[href="#course-${course}"]`).click();
     await expect(page.locator(".course-option.active")).toContainText(
       `COURSE 0${course}`,
     );
-    await expect(page.getByText("0 จาก 8 บทเรียนเสร็จสมบูรณ์")).toBeVisible();
-    for (let lesson = 1; lesson <= 8; lesson++) {
+    await expect(
+      page.getByText(`0 จาก ${lessonCount} บทเรียนเสร็จสมบูรณ์`),
+    ).toBeVisible();
+    for (let lesson = 1; lesson <= lessonCount; lesson++) {
       await page.goto(`/#course-${course}/lesson-${lesson}`);
       await expect(page.locator(".lesson-heading .eyebrow")).toContainText(
-        `WEEK 0${lesson}`,
+        `WEEK ${String(lesson).padStart(2, "0")}`,
       );
       await expect(page.locator(".lesson-content .code-window")).toBeVisible();
       await expect(page.getByRole("radio")).toHaveCount(3);
@@ -229,7 +232,9 @@ test("all new courses open every lesson and preserve separate progress", async (
     );
     await page.reload();
     await page.getByRole("button", { name: "กลับไปหลักสูตร" }).click();
-    await expect(page.getByText("1 จาก 8 บทเรียนเสร็จสมบูรณ์")).toBeVisible();
+    await expect(
+      page.getByText(`1 จาก ${lessonCount} บทเรียนเสร็จสมบูรณ์`),
+    ).toBeVisible();
   }
   await page.locator('.course-option[href="#curriculum"]').click();
   await expect(page.getByText("1 จาก 8 บทเรียนเสร็จสมบูรณ์")).toBeVisible();
@@ -272,5 +277,27 @@ test("advanced course mobile layout and deep link history", async ({
   await expect(page.locator(".lesson-card")).toHaveCount(8);
   await expect(page.locator(".course-option.active")).toContainText(
     "COURSE 03",
+  );
+});
+
+test("LLM course teaches Chroma, grounded chat and personal assistants", async ({
+  page,
+}) => {
+  await page.goto("/#course-4/lesson-9");
+  await expect(page.locator(".lesson-heading h1")).toHaveText(
+    "Vector Database ด้วย ChromaDB",
+  );
+  await expect(page.locator(".code-window pre")).toContainText(
+    "PersistentClient",
+  );
+
+  await page.goto("/#course-4/lesson-10");
+  await expect(page.locator(".lesson-heading h1")).toHaveText(
+    "แชทบอทจากข้อมูลของเราและความรู้ทั่วไป",
+  );
+
+  await page.goto("/#course-4/lesson-11");
+  await expect(page.locator(".lesson-heading h1")).toHaveText(
+    "ผู้ช่วยส่วนตัวที่มีความจำและเครื่องมือ",
   );
 });
