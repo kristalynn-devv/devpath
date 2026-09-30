@@ -7,6 +7,17 @@ test("production uses the single selected theme", async ({ page }) => {
     /.+/,
   );
   await expect(page.locator(".design-prototype-switcher")).toHaveCount(0);
+  const pythonTrack = page.locator(".track-card").first();
+  await pythonTrack.hover();
+  await expect(pythonTrack).toHaveCSS("background-color", "rgb(238, 243, 248)");
+  await expect(pythonTrack.locator(":scope > span")).toHaveCSS(
+    "color",
+    "rgb(100, 116, 139)",
+  );
+  await expect(page.locator(".fullstack-destination")).toHaveCSS(
+    "background-color",
+    "rgb(232, 240, 248)",
+  );
 });
 
 test("lessons, search and empty filters", async ({ page }) => {

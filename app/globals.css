@@ -2131,15 +2131,20 @@ input:focus-visible {
   color: #2563a8;
 }
 .catalog-heading > span,
+.track-card > span,
 .track-card small,
 .course-option > span,
 .course-option small,
 .prerequisite {
   color: #64748b;
 }
+.track-card:hover,
 .course-option:hover,
 .hero-button:hover {
   background: #eef3f8;
+}
+.fullstack-destination {
+  background: #e8f0f8;
 }
 .hero-label,
 .hero-content p,
